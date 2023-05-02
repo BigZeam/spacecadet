@@ -1052,7 +1052,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0281819, y: -0.025629997, z: -10}
+  m_LocalPosition: {x: 0, y: -1.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1140,6 +1140,59 @@ MonoBehaviour:
   playerObj: {fileID: 1135136716}
   timerSlider: {fileID: 389377814}
   globalTimer: 50000
+--- !u!1 &652147128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 652147130}
+  - component: {fileID: 652147129}
+  m_Layer: 0
+  m_Name: Procedural
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &652147129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652147128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f19e047b64bef44873ee8de76fcfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 40
+  height: 10
+  xOffset: 20
+  yOffset: -15
+  minStoneheight: 3
+  maxStoneHeight: 8
+  dirt: {fileID: 7539800305360433429, guid: 76cd38e018d566941bd2c04f0675fe29, type: 3}
+  grass: {fileID: 3848992635959017521, guid: b557290f9dd04b646b00f6b19957efc2, type: 3}
+  stone: {fileID: 8663969695659729090, guid: 26f8cde850f8fb74cbc5efbec9eeaf29, type: 3}
+--- !u!4 &652147130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652147128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &661590612
 GameObject:
   m_ObjectHideFlags: 0
@@ -4136,7 +4189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769007096}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1466058033c3594085d1ef5f8d4f441, type: 3}
   m_Name: 
@@ -4814,11 +4867,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 6.9163833, y: 6.579603}
+    - - {x: 49.869976, y: 10.7853365}
+      - {x: 16.76782, y: 16.717976}
       - {x: -9.721788, y: 6.4410753}
-      - {x: -9.684774, y: -4.9794583}
-      - {x: 21.12868, y: -5.126524}
-      - {x: 21.118998, y: 4.784324}
+      - {x: -10.354292, y: -19.708792}
+      - {x: 60.24749, y: -20.812307}
+      - {x: 60.759514, y: 6.177813}
 --- !u!4 &2076801834
 Transform:
   m_ObjectHideFlags: 0
@@ -5030,11 +5084,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1979757213184257614, guid: 2e86384b9ab41d440bb53bdb92c8ff2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.34
+      value: 20.7
       objectReference: {fileID: 0}
     - target: {fileID: 1979757213184257614, guid: 2e86384b9ab41d440bb53bdb92c8ff2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.49
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 1979757213184257614, guid: 2e86384b9ab41d440bb53bdb92c8ff2a, type: 3}
       propertyPath: m_LocalPosition.z
