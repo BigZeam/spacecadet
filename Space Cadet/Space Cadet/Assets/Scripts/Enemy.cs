@@ -14,9 +14,12 @@ public class Enemy : MonoBehaviour
     float speed;
     Rigidbody2D rb;
     float scaleX;
+
+    [Header("Attack")]
+    public GameObject enemyBullet;
     public Animator anim;
     float yspeed;
-
+    public Transform bulletPos;
     public GameObject coinObj;
 
     [Header("Stats")]
@@ -105,7 +108,7 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        if(Vector3.Distance(transform.position, playerObj.transform.position) > attackRange && type ==1)
+        if(Vector3.Distance(transform.position, playerObj.transform.position) > attackRange && (type ==1 || type == 3))
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
@@ -123,6 +126,12 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Im ATTACKING");
         anim.SetTrigger("Attack");
+        if(type == 3)
+        {
+            //bulletPos.LookAt(playerObj.transform.position);
+            //Instantiate(enemyBullet, bulletPos.position, bulletPos.rotation);
+        }
+        
         curState = EnemyBehaviour.Recover;
         //CancelInvoke();
         Invoke(nameof(SetChase), recoverTime);
