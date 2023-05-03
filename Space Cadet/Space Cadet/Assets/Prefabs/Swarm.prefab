@@ -245,7 +245,7 @@ MonoBehaviour:
   health: 100
   stunTime: 2
   recoverTime: 2
-  attackRange: 2
+  attackRange: 3
   type: 1
   jumpForce: 30
   groundLayer:

@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnerController();
+        //SpawnerController();
     }
     void SpawnEnemy()
     {
@@ -49,6 +49,9 @@ public class EnemySpawner : MonoBehaviour
                 spawnedEnemies.Remove(enemy);
             }
         } 
+    }
+    private void OnTriggerStay2D(Collider2D other) {
+        SpawnerController();
     }
 
 }
