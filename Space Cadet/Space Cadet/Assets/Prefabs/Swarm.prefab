@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2223247665208865163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8819120502363992518}
+  m_Layer: 0
+  m_Name: RayStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8819120502363992518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2223247665208865163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.497, y: -0.504, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7315926997567222453}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7315926997044745311
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7315926997044745308}
+  - {fileID: 8819120502363992518}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -206,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f88e0532f5e074aaf7eaa9da1e33d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
   maxSpeed: 5
   anim: {fileID: 7315926997044745309}
   coinObj: {fileID: 1979757213184257608, guid: 2e86384b9ab41d440bb53bdb92c8ff2a, type: 3}
@@ -214,6 +247,11 @@ MonoBehaviour:
   recoverTime: 2
   attackRange: 2
   type: 1
+  jumpForce: 30
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  rayStartTransform: {fileID: 8819120502363992518}
 --- !u!61 &7315926997567222455
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -255,7 +293,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.25
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

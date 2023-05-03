@@ -25,6 +25,9 @@ public class Enemy : MonoBehaviour
     public float recoverTime;
     public int attackRange;
     [SerializeField] int type;
+    [SerializeField] int jumpForce;
+    public LayerMask groundLayer;
+    public Transform rayStartTransform;
     
     
     //public int damage;
@@ -39,7 +42,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CheckState();
         //Debug.Log(playerObj);
@@ -77,11 +80,30 @@ public class Enemy : MonoBehaviour
         {
             speed = -maxSpeed;
             transform.localScale = new Vector3(scaleX, transform.localScale.y, transform.localScale.z);
+            if(type == 1)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(rayStartTransform.position, Vector2.left, 2f, groundLayer);
+
+                if(hit.collider != null)
+                {
+                    rb.AddForce(Vector2.up * jumpForce);
+                }
+            }
+
         }
         if(transform.position.x < playerObj.transform.position.x)
         {
             speed = maxSpeed;
             transform.localScale = new Vector3((-1)*scaleX, transform.localScale.y, transform.localScale.z);
+            if(type == 1)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(rayStartTransform.position, Vector2.left, 2f, groundLayer);
+
+                if(hit.collider != null)
+                {
+                    rb.AddForce(Vector2.up * jumpForce);
+                }
+            }
         }
         if(Vector3.Distance(transform.position, playerObj.transform.position) > attackRange && type ==1)
         {
