@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2820163755049695301}
   - component: {fileID: 8888853079756017835}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4382622206845284937}
   - component: {fileID: 4382622206845284939}
   - component: {fileID: 4382622206845284940}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnerLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

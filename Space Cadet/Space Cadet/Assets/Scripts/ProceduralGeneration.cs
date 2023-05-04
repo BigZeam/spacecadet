@@ -6,8 +6,12 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] int minStoneheight, maxStoneHeight;
     [SerializeField] GameObject dirt,grass,stone, platform, swarmSpawner, honingSpawner, flierSpawner;
     [SerializeField] int numSpawners;
+
+    int prevSpawnerdist;
+    bool canSpawn;
     void Start()
     {
+        prevSpawnerdist = 0;
         Generation();
     }
 
@@ -22,6 +26,8 @@ public class ProceduralGeneration : MonoBehaviour
             int minStoneSpawnDistance = height - minStoneheight;
             int maxStoneSpawnDistance = height - maxStoneHeight;
             int totalStoneSpawnDistance = Random.Range(minStoneSpawnDistance, maxStoneSpawnDistance);
+
+            canSpawn = x > (prevSpawnerdist +5);
             //Perlin noise.
             for (int y = 0; y < height; y++)//This will help spawn a tile on the y axis
             {
@@ -49,20 +55,23 @@ public class ProceduralGeneration : MonoBehaviour
             {
                 spawnObj(platform, x, height + 1);
             }
-            if(randomizer == 5 && numSpawners < 1)
+            if(randomizer == 5 && numSpawners < 3 && canSpawn)
             {
-                spawnObj(swarmSpawner, x, height + 1);
+                spawnObj(swarmSpawner, x, height + 2);
                 numSpawners++;
+                prevSpawnerdist = x;
             }
-            if(randomizer == 6 && numSpawners < 2)
+            if(randomizer == 6 && numSpawners < 2 && canSpawn)
             {
                 spawnObj(honingSpawner, x, height + 4);
                 numSpawners++;
+                prevSpawnerdist = x;
             }
-            if(randomizer == 7 && numSpawners < 3)
+            if(randomizer == 7 && numSpawners < 1 && canSpawn)
             {
                 spawnObj(flierSpawner, x, height + 5);
                 numSpawners++;
+                prevSpawnerdist = x;
             }
             
         }

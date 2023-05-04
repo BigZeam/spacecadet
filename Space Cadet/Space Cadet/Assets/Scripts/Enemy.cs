@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
     {
         CheckState();
         //Debug.Log(playerObj);
+
     }
 
     private void CheckState()
@@ -65,7 +66,7 @@ public class Enemy : MonoBehaviour
         }
         if(curState == EnemyBehaviour.Recover)
         {
-            rb.velocity = Vector2.zero;
+            //rb.velocity = Vector2.zero;
         }
 
     }
@@ -91,6 +92,8 @@ public class Enemy : MonoBehaviour
                 if(hit.collider != null)
                 {
                     rb.AddForce(Vector2.up * jumpForce);
+                    transform.Translate(Vector2.up * Time.deltaTime);
+                    Debug.Log("we are hitting");
                 }
             }
 
@@ -106,6 +109,7 @@ public class Enemy : MonoBehaviour
                 if(hit.collider != null)
                 {
                     rb.AddForce(Vector2.up * jumpForce);
+                    Debug.Log("we are hitting");
                 }
             }
         }
@@ -118,7 +122,7 @@ public class Enemy : MonoBehaviour
             rb.velocity = new Vector2(speed, yspeed);
         }
         else {
-            rb.velocity = Vector2.zero;
+            //rb.velocity = Vector2.zero;
             curState = EnemyBehaviour.Attack;
         }
         
@@ -169,10 +173,7 @@ public class Enemy : MonoBehaviour
 
         if(other.gameObject.tag == "Player")
         {
-            
             other.gameObject.GetComponent<PlayerController>().ChangeHealth();
-
-
         }
     }
 }
