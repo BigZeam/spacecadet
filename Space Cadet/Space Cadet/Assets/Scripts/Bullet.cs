@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     Gun owner;
+    [SerializeField] GameObject explodeParticle;
     void Update()
     {
         this.transform.Translate((transform.forward*Time.deltaTime));
@@ -20,12 +21,14 @@ public class Bullet : MonoBehaviour
         {
             Enemy enemyScript = other.gameObject.GetComponent<Enemy>();
             enemyScript.ChangeHealth(owner.damage);
+            Instantiate(explodeParticle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
 
         if(other.gameObject.tag != "Player" && other.gameObject.tag != "Coin")
         {
             Debug.Log(other.gameObject.tag);
+            Instantiate(explodeParticle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
