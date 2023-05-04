@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     float yspeed;
     public Transform bulletPos;
     public GameObject coinObj;
+    [SerializeField] GameObject deathParticle;
 
     [Header("Stats")]
     public int health;
@@ -151,6 +152,7 @@ public class Enemy : MonoBehaviour
         if(health <= 0)
         {
             Instantiate(coinObj, this.transform.position, Quaternion.identity);
+            Instantiate(deathParticle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

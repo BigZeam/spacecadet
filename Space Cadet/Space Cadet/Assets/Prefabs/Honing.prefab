@@ -126,14 +126,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f88e0532f5e074aaf7eaa9da1e33d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
   maxSpeed: 1.5
+  enemyBullet: {fileID: 0}
   anim: {fileID: 1203342721681106876}
+  bulletPos: {fileID: 0}
   coinObj: {fileID: 1979757213184257608, guid: 2e86384b9ab41d440bb53bdb92c8ff2a, type: 3}
+  deathParticle: {fileID: 5913244258088972895, guid: 1bde69fa8106c99438641db111b1b9be, type: 3}
   health: 50
   stunTime: 2
   recoverTime: 1
   attackRange: 1
   type: 2
+  jumpForce: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  rayStartTransform: {fileID: 0}
 --- !u!61 &1203342720100643354
 BoxCollider2D:
   m_ObjectHideFlags: 0
