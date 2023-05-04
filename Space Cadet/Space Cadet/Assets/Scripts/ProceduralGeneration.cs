@@ -5,7 +5,7 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] int width,height, xOffset, yOffset;
     [SerializeField] int minStoneheight, maxStoneHeight;
     [SerializeField] GameObject dirt,grass,stone, platform, swarmSpawner;
-    [SerializeField] int spawners;
+    [SerializeField] int numSpawners;
     void Start()
     {
         Generation();
@@ -43,9 +43,16 @@ public class ProceduralGeneration : MonoBehaviour
             {
                 spawnObj(grass, x, height);
             }
-            if(Random.Range(1, 11) < 2)
+
+            int randomizer = Random.Range(1, 11);
+            if(randomizer < 2)
             {
                 spawnObj(platform, x, height + 1);
+            }
+            if(randomizer == 5 && numSpawners < 1)
+            {
+                spawnObj(swarmSpawner, x, height + 1);
+                numSpawners++;
             }
             
         }

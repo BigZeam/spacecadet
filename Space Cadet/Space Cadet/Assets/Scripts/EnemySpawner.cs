@@ -51,7 +51,11 @@ public class EnemySpawner : MonoBehaviour
         } 
     }
     private void OnTriggerStay2D(Collider2D other) {
-        SpawnerController();
+        if(other.gameObject.tag == "Player")
+        {
+            SpawnerController();
+        }
+
     }
 
 }
