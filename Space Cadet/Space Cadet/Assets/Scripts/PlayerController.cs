@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     float readyForNextShot;
     int ammo;
     bool isReloading;
+    [SerializeField] GameObject gunFireParticle;
 
     [Header("UI")]
     public Slider ammoSlider;
@@ -147,6 +148,7 @@ public class PlayerController : MonoBehaviour
                 readyForNextShot = Time.time + gunSlot1.fireRate;
                 GameObject tempBullet;
                 tempBullet = Instantiate(bulletObj, spawnPos.position, spawnPos.rotation);
+                Instantiate(gunFireParticle, spawnPos.position, spawnPos.rotation);
 
                 tempBullet.GetComponent<Bullet>().SetGun(gunSlot1);
                 if(ammo <=0)
