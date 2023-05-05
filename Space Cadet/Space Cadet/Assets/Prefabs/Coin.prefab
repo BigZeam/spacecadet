@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1979757213184257613}
   - component: {fileID: 2389186808087497042}
   - component: {fileID: 724689597}
+  - component: {fileID: 665810003}
+  - component: {fileID: 665810004}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -149,3 +151,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3f0c8d388923c418745709e16dcb73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &665810003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979757213184257608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ed400a9e73ccd46906e697fab5b7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 61ec3bc4e70730d43b84aee189abefd5, type: 2}
+--- !u!114 &665810004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979757213184257608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc31c282986153418ded4e9c7ee510e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 61ec3bc4e70730d43b84aee189abefd5, type: 2}

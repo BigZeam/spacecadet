@@ -15,12 +15,14 @@ public class GameManager : MonoBehaviour
     public int globalTimer;
     public int playerLevel {get; private set;}
 
+    [SerializeField] List<Item> allPossibleItems = new List<Item>();
 
     void Start()
     {
         timerSlider.maxValue = globalTimer;
         startingGun = playerObj.GetComponent<PlayerController>().GetGunSlot1();
         startingGun.RestoreDefaults();
+        ResetItemCounts();
     }
 
     // Update is called once per frame
@@ -41,4 +43,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    void ResetItemCounts()
+    {
+        foreach(Item item in allPossibleItems)
+        {
+            item.ResetCount();
+        }
+    }
 }
