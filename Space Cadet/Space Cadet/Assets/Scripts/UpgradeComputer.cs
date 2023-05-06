@@ -9,6 +9,7 @@ public class UpgradeComputer : MonoBehaviour
     bool canInteract;
     bool showPanel;
     bool canShop;
+    [SerializeField] Item currency;
     public PlayerController playerObj;
 
     public Text ShopText;
@@ -16,7 +17,7 @@ public class UpgradeComputer : MonoBehaviour
     public Image[] splashes;
     public GameObject[] itemSlots;
     public UpgradeItem[] itemList;
-    int[] itemSlotNum, timesUpgraded;
+    int[] itemSlotNum, timesUpgraded, numPrice;
     int x, y, z;
     public GameObject compPanel;
 
@@ -26,6 +27,7 @@ public class UpgradeComputer : MonoBehaviour
     {
         itemSlotNum = new int[3];
         timesUpgraded = new int[itemList.Length];
+        numPrice = new int[3];
         canShop = true;
 
         for(int i = 0; i < timesUpgraded.Length; i++)
@@ -118,6 +120,7 @@ public class UpgradeComputer : MonoBehaviour
             names[i].text = itemList[itemSlotNum[i]].GetName();
             splashes[i].sprite = itemList[itemSlotNum[i]].GetSplash();
             prices[i].text = "Price " + GetPrice(i).ToString();
+            numPrice[i] = GetPrice(itemSlotNum[i]);
         }
     }
 
@@ -137,10 +140,14 @@ public class UpgradeComputer : MonoBehaviour
     /// fill shop items
     public void BigMethod(int choice)
     {
+
+
+        if(numPrice[choice] < currency.count)
+        {
+            currency.count = currency.count- numPrice[choice];
         int realChoice;
 
         itemSlots[choice -1].SetActive(false);
-
         
         switch(choice)
         {
@@ -194,6 +201,7 @@ public class UpgradeComputer : MonoBehaviour
             default:
             Debug.Log("Broke");
             break;
+        }
         }
 
         

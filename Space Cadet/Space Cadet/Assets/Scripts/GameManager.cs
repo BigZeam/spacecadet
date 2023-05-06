@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         if(globalTimer <= 0)
         {
-            Debug.Log("LOS");
+            //Debug.Log("LOS");
         }
     }
 
