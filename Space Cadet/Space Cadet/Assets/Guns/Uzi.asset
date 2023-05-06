@@ -15,7 +15,11 @@ MonoBehaviour:
   name: Uzi
   gunSprite: {fileID: -1553295751, guid: d4f80875faf6bea4eb824384a84a4e88, type: 3}
   knockback: 0
-  ammoCount: 50
-  damage: 15
-  bulletSpeed: 500
+  ammoCount: 60
+  defaultAmmoCount: 50
+  damage: 50
+  defaultDamage: 50
+  bulletSpeed: 700
+  defaultBulletSpeed: 700
   fireRate: 0.15
+  defaultFireRate: 0.15
