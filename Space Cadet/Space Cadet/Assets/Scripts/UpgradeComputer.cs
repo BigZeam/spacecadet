@@ -37,6 +37,8 @@ public class UpgradeComputer : MonoBehaviour
             timesUpgraded[i] = 1;
             itemList[i].ResetCost();
         }
+
+        Debug.Log(currency.itemName);
     }
 
     // Update is called once per frame

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Itemname: Reload UP
   splash: {fileID: 159709879, guid: d4f80875faf6bea4eb824384a84a4e88, type: 3}
+  name: 4
   startingCost: 10
