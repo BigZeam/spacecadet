@@ -30,9 +30,12 @@ public class UpgradeComputer : MonoBehaviour
         numPrice = new int[3];
         canShop = true;
 
+
+
         for(int i = 0; i < timesUpgraded.Length; i++)
         {
             timesUpgraded[i] = 1;
+            itemList[i].ResetCost();
         }
     }
 
@@ -119,8 +122,8 @@ public class UpgradeComputer : MonoBehaviour
         {
             names[i].text = itemList[itemSlotNum[i]].GetName();
             splashes[i].sprite = itemList[itemSlotNum[i]].GetSplash();
-            prices[i].text = "Price " + GetPrice(i).ToString();
-            numPrice[i] = GetPrice(itemSlotNum[i]);
+            prices[i].text = itemList[itemSlotNum[i]].GetCost().ToString() + " " + currency.itemName;
+            
         }
     }
 
@@ -142,12 +145,10 @@ public class UpgradeComputer : MonoBehaviour
     {
 
 
-        if(numPrice[choice] < currency.count)
-        {
-            currency.count = currency.count- numPrice[choice];
+
         int realChoice;
 
-        itemSlots[choice -1].SetActive(false);
+
         
         switch(choice)
         {
@@ -163,6 +164,11 @@ public class UpgradeComputer : MonoBehaviour
             //totherthing
         }
 
+        if(itemList[realChoice].GetCost() <= currency.count)
+        {
+        
+        currency.count = currency.count - itemList[realChoice].GetCost();
+        itemSlots[choice -1].SetActive(false);
         switch(realChoice)
         {
             case 0:
@@ -201,9 +207,10 @@ public class UpgradeComputer : MonoBehaviour
             default:
             Debug.Log("Broke");
             break;
+        
         }
+            itemList[realChoice].SetCost(10);
         }
-
         
     }
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Itemname: DamageBoost
   splash: {fileID: -2124430210, guid: d4f80875faf6bea4eb824384a84a4e88, type: 3}
+  startingCost: 10

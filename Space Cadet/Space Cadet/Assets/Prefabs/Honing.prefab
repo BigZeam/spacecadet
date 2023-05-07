@@ -131,7 +131,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 0}
   anim: {fileID: 1203342721681106876}
   bulletPos: {fileID: 0}
-  coinObj: {fileID: 1979757213184257608, guid: 2e86384b9ab41d440bb53bdb92c8ff2a, type: 3}
+  coinObj: {fileID: 693921471765651964, guid: fdd390706f8c22d498eb9630ca0e0e7d, type: 3}
   deathParticle: {fileID: 5913244258088972895, guid: 1bde69fa8106c99438641db111b1b9be, type: 3}
   health: 50
   stunTime: 2

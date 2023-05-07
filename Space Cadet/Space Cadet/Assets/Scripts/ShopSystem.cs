@@ -5,6 +5,10 @@ using UnityEngine;
 public class ShopSystem : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] Item currency; 
+    [SerializeField] UpgradeItem merch;
+        
+
     void Start()
     {
         
