@@ -169,40 +169,31 @@ public class UpgradeComputer : MonoBehaviour
         
         currency.count = currency.count - itemList[realChoice].GetCost();
         itemSlots[choice -1].SetActive(false);
-        switch(realChoice)
+        switch(itemList[realChoice].name)
         {
-            case 0:
+            case UpgradeItem.ItemType.ClipSize:
             //clipsize
             playerObj.GetGunSlot1().ammoCount+=5;
-            Debug.Log("timesup" + timesUpgraded[0]);
-            timesUpgraded[0] = timesUpgraded[0] + 1;
             break;
-            case 1:
+            case UpgradeItem.ItemType.Damage:
             //damage
             playerObj.GetGunSlot1().damage+=5;
-            Debug.Log("timesup" + timesUpgraded[1]);
-            timesUpgraded[1] = timesUpgraded[1]+ 1;
             break;
-            case 2:
+            case UpgradeItem.ItemType.FireRate:
             //fireRate
             playerObj.GetGunSlot1().fireRate-=.05f;
-            Debug.Log("timesup" + timesUpgraded[2]);
-            timesUpgraded[2] = timesUpgraded[2]+1;
             break;
-            case 3:
+            case UpgradeItem.ItemType.HealthUp:
             //healthUP
             playerObj.IncHealth();
-            timesUpgraded[3] = timesUpgraded[3]+1;
             break;
-            case 4:
+            case UpgradeItem.ItemType.ReloadSpeed:
             //reloadSpeed
             playerObj.IncReloadSpeed();
-            timesUpgraded[4] = timesUpgraded[4]+1;
             break;
-            case 5:
+            case UpgradeItem.ItemType.SpeedBoost:
             //inc move speed
             playerObj.IncMoveSpeed(.5f);
-            timesUpgraded[5] = timesUpgraded[5]+1;
             break;
             default:
             Debug.Log("Broke");

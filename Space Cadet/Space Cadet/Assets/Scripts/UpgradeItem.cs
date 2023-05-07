@@ -9,6 +9,8 @@ public class UpgradeItem : ScriptableObject
 
     public Sprite splash;
 
+    public ItemType name;
+
     [SerializeField] int startingCost;
 
     int cost;
@@ -34,5 +36,8 @@ public class UpgradeItem : ScriptableObject
     public void ResetCost(){
         cost = startingCost;
     }
-
+public enum ItemType{
+    ClipSize, Damage, FireRate, HealthUp, ReloadSpeed, SpeedBoost
 }
+}
+
