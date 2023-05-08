@@ -17,6 +17,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         //Debug.Log("Hit");
+        if(other.gameObject.tag == "Flower" || other.gameObject.tag == "FlowerBase")
+        {
+            Destroy(other.gameObject);
+        }
         if(other.gameObject.tag == "Enemy")
         {
             Enemy enemyScript = other.gameObject.GetComponent<Enemy>();
@@ -27,9 +31,10 @@ public class Bullet : MonoBehaviour
 
         if(other.gameObject.tag != "Player" && other.gameObject.tag != "Coin")
         {
-            Debug.Log(other.gameObject.tag);
+            //Debug.Log(other.gameObject.tag);
             Instantiate(explodeParticle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+
     }
 }

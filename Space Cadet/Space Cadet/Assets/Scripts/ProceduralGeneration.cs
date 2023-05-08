@@ -4,7 +4,7 @@ public class ProceduralGeneration : MonoBehaviour
 {
     [SerializeField] int width,height, xOffset, yOffset;
     [SerializeField] int minStoneheight, maxStoneHeight;
-    [SerializeField] GameObject dirt,grass,stone, platform, swarmSpawner, honingSpawner, flierSpawner;
+    [SerializeField] GameObject dirt,grass,stone, platform, swarmSpawner, honingSpawner, flierSpawner, flowerPlant;
     [SerializeField] int numSpawners;
 
     int prevSpawnerdist;
@@ -47,17 +47,21 @@ public class ProceduralGeneration : MonoBehaviour
             }
             else
             {
+                if(Random.Range(1,11) < 2)
+                {
+                    spawnObj(flowerPlant, x, height + 1.45f);
+                }
                 spawnObj(grass, x, height);
             }
 
             int randomizer = Random.Range(1, 11);
             if(randomizer < 2)
             {
-                spawnObj(platform, x, height + 1);
+                spawnObj(platform, x, height + 1.25f);
             }
             if(randomizer == 5 && numSpawners < 3 && canSpawn)
             {
-                spawnObj(swarmSpawner, x, height + 2);
+                spawnObj(swarmSpawner, x, height + 1.45f);
                 numSpawners++;
                 prevSpawnerdist = x;
             }
@@ -77,7 +81,7 @@ public class ProceduralGeneration : MonoBehaviour
         }
     }
     
-    void spawnObj(GameObject obj,int width,int height)//What ever we spawn will be a child of our procedural generation gameObj
+    void spawnObj(GameObject obj,float width,float height)//What ever we spawn will be a child of our procedural generation gameObj
     {
         obj = Instantiate(obj, new Vector2(width + xOffset, height + yOffset), Quaternion.identity);
         obj.transform.parent = this.transform;
