@@ -6964,6 +6964,8 @@ MonoBehaviour:
   flierSpawner: {fileID: 1304336306224164405, guid: 1f670f6057cee3a4e81522d9075922f8, type: 3}
   flowerPlant: {fileID: 846195938919559326, guid: aa9c492fce27ff04b9e144263f08fe69, type: 3}
   numSpawners: 0
+  spawnerDist: 10
+  comp: {fileID: 819127667}
 --- !u!4 &652147130
 Transform:
   m_ObjectHideFlags: 0

@@ -5,7 +5,9 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] int width,height, xOffset, yOffset;
     [SerializeField] int minStoneheight, maxStoneHeight;
     [SerializeField] GameObject dirt,grass,stone, platform, swarmSpawner, honingSpawner, flierSpawner, flowerPlant;
-    [SerializeField] int numSpawners;
+    [SerializeField] int numSpawners, spawnerDist;
+
+    [SerializeField] GameObject comp;
 
     bool canChangeHeight;
     int prevSpawnerdist;
@@ -33,7 +35,7 @@ public class ProceduralGeneration : MonoBehaviour
             int maxStoneSpawnDistance = height - maxStoneHeight;
             int totalStoneSpawnDistance = Random.Range(minStoneSpawnDistance, maxStoneSpawnDistance);
 
-            canSpawn = x > (prevSpawnerdist +5);
+            canSpawn = x > (prevSpawnerdist +spawnerDist);
             //Perlin noise.
             for (int y = 0; y < height; y++)//This will help spawn a tile on the y axis
             {
@@ -67,26 +69,29 @@ public class ProceduralGeneration : MonoBehaviour
                 {
                     spawnObj(platform, x, height + 1.25f);
                 }
-                if(randomizer == 5 && numSpawners < 3 && canSpawn)
+                if(randomizer == 5 && numSpawners < 7 && canSpawn)
                 {
                     spawnObj(swarmSpawner, x, height + 1.45f);
                     numSpawners++;
                     prevSpawnerdist = x;
                 }
-                if(randomizer == 6 && numSpawners < 2 && canSpawn)
+                if(randomizer == 6 && numSpawners < 6 && canSpawn)
                 {
                     spawnObj(honingSpawner, x, height + 4);
                     numSpawners++;
                     prevSpawnerdist = x;
                 }
-                if(randomizer == 7 && numSpawners < 1 && canSpawn)
+                if(randomizer == 7 && numSpawners < 5 && canSpawn)
                 {
                     spawnObj(flierSpawner, x, height + 5);
                     numSpawners++;
                     prevSpawnerdist = x;
                 }
             }
-
+            if(x == 83)
+            {
+                comp.transform.position = new Vector3(x + xOffset, height + yOffset + 1.1f, 0);
+            }
             
         }
     }
