@@ -9,9 +9,12 @@ public class UpgradeComputer : MonoBehaviour
     bool canInteract;
     bool showPanel;
     bool canShop;
+    [Header("General Shop Thigs")]
     [SerializeField] Item currency;
     public PlayerController playerObj;
 
+
+    [Header("UI")]
     public Text ShopText;
     public Text[] names, prices;
     public Image[] splashes;
@@ -38,7 +41,7 @@ public class UpgradeComputer : MonoBehaviour
             itemList[i].ResetCost();
         }
 
-        Debug.Log(currency.itemName);
+
     }
 
     // Update is called once per frame

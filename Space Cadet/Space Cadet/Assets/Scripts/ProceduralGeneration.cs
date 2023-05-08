@@ -7,6 +7,7 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] GameObject dirt,grass,stone, platform, swarmSpawner, honingSpawner, flierSpawner, flowerPlant;
     [SerializeField] int numSpawners;
 
+    bool canChangeHeight;
     int prevSpawnerdist;
     bool canSpawn;
     void Start()
@@ -19,10 +20,15 @@ public class ProceduralGeneration : MonoBehaviour
     {
         for (int x = 0; x < width; x++)//This will help spawn a tile on the x axis
         {
-            // now for procedural generation we need to gradually increase and decrease the height value
-            int minHeight = height - 1;
-            int maxHeight = height + 2;
-            height = Random.Range(minHeight, maxHeight);
+            canChangeHeight = !(x > 75 && x < 95);
+            int maxHeight;
+            int minHeight;
+            if(canChangeHeight)
+            {
+                minHeight = height - 1;
+                maxHeight = height + 2;
+                height = Random.Range(minHeight, maxHeight);
+            }
             int minStoneSpawnDistance = height - minStoneheight;
             int maxStoneSpawnDistance = height - maxStoneHeight;
             int totalStoneSpawnDistance = Random.Range(minStoneSpawnDistance, maxStoneSpawnDistance);
@@ -47,36 +53,40 @@ public class ProceduralGeneration : MonoBehaviour
             }
             else
             {
-                if(Random.Range(1,11) < 2)
+                if(Random.Range(1,11) < 2 && canChangeHeight)
                 {
                     spawnObj(flowerPlant, x, height + 1.45f);
                 }
                 spawnObj(grass, x, height);
             }
 
-            int randomizer = Random.Range(1, 11);
-            if(randomizer < 2)
+            if(canChangeHeight)
             {
-                spawnObj(platform, x, height + 1.25f);
+                int randomizer = Random.Range(1, 11);
+                if(randomizer < 2)
+                {
+                    spawnObj(platform, x, height + 1.25f);
+                }
+                if(randomizer == 5 && numSpawners < 3 && canSpawn)
+                {
+                    spawnObj(swarmSpawner, x, height + 1.45f);
+                    numSpawners++;
+                    prevSpawnerdist = x;
+                }
+                if(randomizer == 6 && numSpawners < 2 && canSpawn)
+                {
+                    spawnObj(honingSpawner, x, height + 4);
+                    numSpawners++;
+                    prevSpawnerdist = x;
+                }
+                if(randomizer == 7 && numSpawners < 1 && canSpawn)
+                {
+                    spawnObj(flierSpawner, x, height + 5);
+                    numSpawners++;
+                    prevSpawnerdist = x;
+                }
             }
-            if(randomizer == 5 && numSpawners < 3 && canSpawn)
-            {
-                spawnObj(swarmSpawner, x, height + 1.45f);
-                numSpawners++;
-                prevSpawnerdist = x;
-            }
-            if(randomizer == 6 && numSpawners < 2 && canSpawn)
-            {
-                spawnObj(honingSpawner, x, height + 4);
-                numSpawners++;
-                prevSpawnerdist = x;
-            }
-            if(randomizer == 7 && numSpawners < 1 && canSpawn)
-            {
-                spawnObj(flierSpawner, x, height + 5);
-                numSpawners++;
-                prevSpawnerdist = x;
-            }
+
             
         }
     }
