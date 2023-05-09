@@ -7,22 +7,32 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] GameObject dirt,grass,stone, platform, swarmSpawner, honingSpawner, flierSpawner, flowerPlant;
     [SerializeField] int numSpawners, spawnerDist;
 
-    [SerializeField] GameObject comp;
+    [SerializeField] GameObject comp, bossRuins, gunRuins;
 
     bool canChangeHeight;
     int prevSpawnerdist;
     bool canSpawn;
+    int bossSpawnPos;
+    bool earlySpawn;
+
+    int flatZone, flatMod;
+    [SerializeField] float ruinScaler;
+
     void Start()
     {
         prevSpawnerdist = 0;
+        bossSpawnPos = Random.Range(1, 11);
+        flatZone = 5;
+        FindBossSpawnPosition();
         Generation();
+        
     }
 
     void Generation()
     {
         for (int x = 0; x < width; x++)//This will help spawn a tile on the x axis
         {
-            canChangeHeight = !(x > 75 && x < 95);
+            canChangeHeight = !(x > flatZone && x < flatZone + flatMod);
             int maxHeight;
             int minHeight;
             if(canChangeHeight)
@@ -91,6 +101,32 @@ public class ProceduralGeneration : MonoBehaviour
             if(x == 83)
             {
                 comp.transform.position = new Vector3(x + xOffset, height + yOffset + 1.1f, 0);
+                
+            }
+            if(x == 95)
+            {
+                flatZone = 150;
+                flatMod = 20;
+            }
+            if(x == 30)
+            {
+                flatZone = 75;
+                flatMod = 20;
+            }
+            if(x == 14)
+            {
+                    if(earlySpawn)
+                        spawnObj(bossRuins, x, height + ruinScaler);
+                    else 
+                        spawnObj(gunRuins, x, height + ruinScaler);
+
+            }
+            if(x == 163)
+            {
+                if(!earlySpawn)
+                        spawnObj(bossRuins, x, height + ruinScaler);
+                    else 
+                        spawnObj(gunRuins, x, height + ruinScaler);
             }
             
         }
@@ -100,6 +136,21 @@ public class ProceduralGeneration : MonoBehaviour
     {
         obj = Instantiate(obj, new Vector2(width + xOffset, height + yOffset), Quaternion.identity);
         obj.transform.parent = this.transform;
+    }
+
+    void FindBossSpawnPosition()
+    {
+        if(bossSpawnPos < 5)
+        {
+            flatZone = 5;
+            flatMod = 20; 
+            earlySpawn = true;
+        }
+        else 
+        {
+            flatMod = 14;
+        }
+
     }
 
 }

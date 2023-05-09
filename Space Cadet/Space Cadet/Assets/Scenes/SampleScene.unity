@@ -6966,6 +6966,9 @@ MonoBehaviour:
   numSpawners: 0
   spawnerDist: 10
   comp: {fileID: 819127667}
+  bossRuins: {fileID: 4393889874180375713, guid: 32e8b0fa74ea4394a92550dcc38bd83f, type: 3}
+  gunRuins: {fileID: 6941414262638134604, guid: d50110d0277d2c6449e1c756a772f45f, type: 3}
+  ruinScaler: 0.5
 --- !u!4 &652147130
 Transform:
   m_ObjectHideFlags: 0
