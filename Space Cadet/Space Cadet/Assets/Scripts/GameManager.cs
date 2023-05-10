@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Slider timerSlider;
     public int globalTimer;
     public int playerLevel {get; private set;}
+    bool canSetTimer;
 
     [SerializeField] List<Item> allPossibleItems = new List<Item>();
 
@@ -28,7 +29,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetGlobalTimer();
+        if(canSetTimer)
+            SetGlobalTimer();
     }
 
     void SetGlobalTimer()
@@ -49,6 +51,15 @@ public class GameManager : MonoBehaviour
         foreach(Item item in allPossibleItems)
         {
             item.ResetCount();
+        }
+    }
+
+    public void SetTimer(bool b)
+    {
+        canSetTimer = b;
+        if(!b)
+        {
+            timerSlider.value = timerSlider.maxValue;
         }
     }
 }

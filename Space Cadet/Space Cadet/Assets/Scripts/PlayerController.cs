@@ -266,4 +266,8 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public void SetNewGunImg()
+    {
+        gunSr.sprite = gunSlot1.gunSprite;
+    }
 }
