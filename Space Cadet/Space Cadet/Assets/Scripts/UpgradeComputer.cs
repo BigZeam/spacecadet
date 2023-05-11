@@ -12,14 +12,17 @@ public class UpgradeComputer : MonoBehaviour
     [Header("General Shop Thigs")]
     [SerializeField] Item currency;
     public PlayerController playerObj;
+    ComputerManager cm;
 
 
     [Header("UI")]
     public Text ShopText;
     public Text[] names, prices;
     public Image[] splashes;
-    public GameObject[] itemSlots;
-    public UpgradeItem[] itemList;
+    //public GameObject[] itemSlots;
+    public List <GameObject> itemSlots = new List<GameObject>();
+    //public UpgradeItem[] itemList;
+    public List<UpgradeItem> itemList = new List<UpgradeItem>();
     int[] itemSlotNum, timesUpgraded, numPrice;
     int x, y, z;
     public GameObject compPanel;
@@ -28,11 +31,12 @@ public class UpgradeComputer : MonoBehaviour
 
     void Start()
     {
-        itemSlotNum = new int[3];
-        timesUpgraded = new int[itemList.Length];
+
+        itemSlotNum = new int[itemSlots.Count];
+        timesUpgraded = new int[itemList.Count];
         numPrice = new int[3];
         canShop = true;
-
+        cm = GameObject.FindGameObjectWithTag("Computer").GetComponent<ComputerManager>();
 
 
         for(int i = 0; i < timesUpgraded.Length; i++)
@@ -78,7 +82,7 @@ public class UpgradeComputer : MonoBehaviour
                 showPanel = !showPanel;
                 compPanel.SetActive(showPanel);
                 Invoke("ShopResesttime", shoptime);
-                for(int i = 0; i < itemSlots.Length; i++)
+                for(int i = 0; i < itemSlots.Count; i++)
                 {
                     itemSlots[i].SetActive(true);
                 }
@@ -107,27 +111,51 @@ public class UpgradeComputer : MonoBehaviour
     }
     private void GenerateUniqueNumber()
     {
-        x = 1;
-        y = 1;
-        z = 1;
+        if(itemList.Count > 0)
+            y = 1;
+        if(itemList.Count > 1)
+            z = 2;
+
+        x = 0;
+        /*
+        if(itemList.Count >=3)
+        {
+            z = 1;
+        }
+        
         while(x==y || x==z || y==z)
         {
-            x = Random.Range(0, itemList.Length);
-            y = Random.Range(0, itemList.Length);
-            z = Random.Range(0, itemList.Length);
+            x = Random.Range(0, itemList.Count);
+            y = Random.Range(0, itemList.Count);
+            if(itemList.Count >=3)
+            {
+                z = Random.Range(0, itemList.Count);
+            }
+            
         }
-
+        */
         itemSlotNum[0] = x;
-        itemSlotNum[1] = y;
-        itemSlotNum[2] = z;
+        if(itemList.Count > 0)
+            itemSlotNum[1] = y;
+        if(itemList.Count > 1)
+            itemSlotNum[2] = z;
     }
     private void FillSlots()
     {
-        for(int i = 0; i < itemSlots.Length; i++)
+        for(int j = 0; j < names.Length; j++)
         {
-            names[i].text = itemList[itemSlotNum[i]].GetName();
-            splashes[i].sprite = itemList[itemSlotNum[i]].GetSplash();
-            prices[i].text = itemList[itemSlotNum[i]].GetCost().ToString() + " " + currency.itemName;
+            itemSlots[j].SetActive(false);
+        }
+        for(int i = 0; i < itemSlots.Count; i++)
+        {
+            if(i < itemList.Count)
+            {
+                itemSlots[i].SetActive(true);
+                names[i].text = itemList[itemSlotNum[i]].GetName();
+                splashes[i].sprite = itemList[itemSlotNum[i]].GetSplash();
+                prices[i].text = itemList[itemSlotNum[i]].GetCost().ToString() + " " + currency.itemName;
+            }
+
             
         }
     }
@@ -149,12 +177,8 @@ public class UpgradeComputer : MonoBehaviour
     public void BigMethod(int choice)
     {
 
-
-
         int realChoice;
 
-
-        
         switch(choice)
         {
             case 1:
@@ -199,6 +223,9 @@ public class UpgradeComputer : MonoBehaviour
             case UpgradeItem.ItemType.SpeedBoost:
             //inc move speed
             playerObj.IncMoveSpeed(.5f);
+            break;
+            case UpgradeItem.ItemType.PlayerProtection:
+            cm.playerProtection.SetActive(true);
             break;
             default:
             Debug.Log("Broke");

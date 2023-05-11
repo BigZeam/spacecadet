@@ -37,7 +37,8 @@ public class UpgradeItem : ScriptableObject
         cost = startingCost;
     }
 public enum ItemType{
-    ClipSize, Damage, FireRate, HealthUp, ReloadSpeed, SpeedBoost
+    ClipSize, Damage, FireRate, HealthUp, ReloadSpeed, SpeedBoost, RadiationZone, RadiationPot, HealthPot, GunMod, PlantMod1, PlayerProtection, 
+    
 }
 }
 

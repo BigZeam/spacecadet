@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     [Header("Stats")]
     public int health;
     public int type;
+    [SerializeField] Animator anim;
     int money;
 
     
@@ -66,13 +67,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
         Jump();
         Shoot();
     }
 
     private void FixedUpdate()
     {
+        moveInput = Input.GetAxisRaw("Horizontal");
         Move();
     }
 
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         Flip();
         rb2d.velocity = new Vector2(moveInput * moveSpeed, rb2d.velocity.y);
+        anim.SetBool("isMoving", (moveInput != 0));
     }
 
     public void Flip()

@@ -10,6 +10,7 @@ TagManager:
   - Manager
   - Flower
   - FlowerBase
+  - Computer
   layers:
   - Default
   - TransparentFX
