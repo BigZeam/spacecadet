@@ -12,11 +12,13 @@ public class Flower : MonoBehaviour
     
     int growTimer;
     bool isGrowing;
+    float xval, yval;
 
 
     void Start()
     {
-        
+        xval = transform.position.x;
+        yval = transform.position.y;
     }
 
     // Update is called once per frame
@@ -42,5 +44,20 @@ public class Flower : MonoBehaviour
                 flowerParticles.SetActive(false);
             }
         }
+    }
+    public void SetFlowerType()
+    {
+        if(xval < -60 || xval > 70)
+        {
+
+        }
+        else if (xval < -40 || xval > 55)
+        {
+
+        }
+    }
+    public void SetGrowTime(int newtime)
+    {
+        growTime-=newtime;
     }
 }

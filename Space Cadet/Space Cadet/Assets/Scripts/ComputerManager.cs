@@ -5,6 +5,7 @@ using UnityEngine;
 public class ComputerManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject gunComputer, plantComputer1, plantComputer2, playerProtection;
+    public GameObject gunComputer, plantComputer1, plantComputer2, playerProtection, radiationZone;
+    public Flower thisFlower;
 
 }

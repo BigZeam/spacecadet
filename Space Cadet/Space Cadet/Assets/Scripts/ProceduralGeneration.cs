@@ -100,7 +100,7 @@ public class ProceduralGeneration : MonoBehaviour
             }
             if(x == 83)
             {
-                comp.transform.position = new Vector3(x + xOffset, height + yOffset + 1.1f, 0);
+                comp.transform.position = new Vector3(x + xOffset, height + yOffset + .5f, 0);
                 
             }
             if(x == 95)

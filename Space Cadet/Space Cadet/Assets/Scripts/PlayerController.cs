@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     int ammo;
     bool isReloading;
     [SerializeField] GameObject gunFireParticle;
+    bool canShoot;
 
     [Header("UI")]
     public Slider ammoSlider;
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
         ammo = gunSlot1.ammoCount;
         ammoSlider.maxValue = ammo;
         SetAmmoUI();
-        
+        canShoot = true;
         rb2d = GetComponent<Rigidbody2D>();
         scaleX = transform.localScale.x;
         gunSr.sprite = gunSlot1.gunSprite;
@@ -68,7 +69,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Jump();
-        Shoot();
+        if(canShoot)
+            Shoot();
     }
 
     private void FixedUpdate()
@@ -271,5 +273,8 @@ public class PlayerController : MonoBehaviour
     public void SetNewGunImg()
     {
         gunSr.sprite = gunSlot1.gunSprite;
+    }
+    public void SetCanShoot(bool b) {
+        canShoot = b;
     }
 }

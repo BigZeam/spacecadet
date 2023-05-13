@@ -13,10 +13,11 @@ public class UpgradeComputer : MonoBehaviour
     [SerializeField] Item currency;
     public PlayerController playerObj;
     ComputerManager cm;
+    GameManager gm;
 
 
     [Header("UI")]
-    public Text ShopText;
+    //public Text ShopText;
     public Text[] names, prices;
     public Image[] splashes;
     //public GameObject[] itemSlots;
@@ -31,7 +32,7 @@ public class UpgradeComputer : MonoBehaviour
 
     void Start()
     {
-
+        gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         itemSlotNum = new int[itemSlots.Count];
         timesUpgraded = new int[itemList.Count];
         numPrice = new int[3];
@@ -67,6 +68,7 @@ public class UpgradeComputer : MonoBehaviour
         {
             canInteract = false;
             compPanel.SetActive(false);
+            playerObj.SetCanShoot(true);
             //GenerateItemSlot();
         }
             
@@ -78,10 +80,11 @@ public class UpgradeComputer : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E) && canShop)
             {
-                canShop = false;
+                //canShop = false;
+                playerObj.SetCanShoot(false);
                 showPanel = !showPanel;
                 compPanel.SetActive(showPanel);
-                Invoke("ShopResesttime", shoptime);
+                //Invoke("ShopResesttime", shoptime);
                 for(int i = 0; i < itemSlots.Count; i++)
                 {
                     itemSlots[i].SetActive(true);
@@ -91,10 +94,10 @@ public class UpgradeComputer : MonoBehaviour
         }
         if(canShop)
         {
-            ShopText.text = "Shop is Open";
+            //ShopText.text = "Shop is Open";
         }
         else {
-            ShopText.text = "Check back Later";
+            //ShopText.text = "Check back Later";
         }
     }
     public void HidePanel()
@@ -153,7 +156,10 @@ public class UpgradeComputer : MonoBehaviour
                 itemSlots[i].SetActive(true);
                 names[i].text = itemList[itemSlotNum[i]].GetName();
                 splashes[i].sprite = itemList[itemSlotNum[i]].GetSplash();
-                prices[i].text = itemList[itemSlotNum[i]].GetCost().ToString() + " " + currency.itemName;
+                if(itemList[itemSlotNum[i]].GetCost() < 101)
+                    prices[i].text = itemList[itemSlotNum[i]].GetCost().ToString() + " " + currency.itemName;
+                else 
+                    prices[i].text = "Fully Upgraded";
             }
 
             
@@ -173,6 +179,14 @@ public class UpgradeComputer : MonoBehaviour
         canShop = true;
     }
 
+    public void ClearList()
+    {
+        itemList.Clear();
+    }
+    public void AddToItems(UpgradeItem newItem)
+    {
+        itemList.Add(newItem);
+    }
     /// fill shop items
     public void BigMethod(int choice)
     {
@@ -226,6 +240,25 @@ public class UpgradeComputer : MonoBehaviour
             break;
             case UpgradeItem.ItemType.PlayerProtection:
             cm.playerProtection.SetActive(true);
+            itemList[realChoice].SetCost(100);
+            break;
+            case UpgradeItem.ItemType.WeaponMod:
+            cm.gunComputer.SetActive(true);
+            itemList[realChoice].SetCost(100);
+            break;
+            case UpgradeItem.ItemType.PlantMod1:
+            cm.plantComputer1.SetActive(true);
+            itemList[realChoice].SetCost(100);
+            break;
+            case UpgradeItem.ItemType.Flower1Growtime:
+            cm.thisFlower.SetGrowTime(1800);
+            itemList[realChoice].SetCost(10);
+            break;
+            case UpgradeItem.ItemType.RadiationMax:
+            gm.timerSlider.maxValue = gm.timerSlider.maxValue + 10000;
+            break;
+            case UpgradeItem.ItemType.RadiationZone:
+            cm.radiationZone.transform.localScale += new Vector3(5, 0, 0);
             break;
             default:
             Debug.Log("Broke");
