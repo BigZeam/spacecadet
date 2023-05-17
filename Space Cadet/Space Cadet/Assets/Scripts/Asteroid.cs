@@ -13,6 +13,6 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(new Vector3(Random.Range(-1, 1), Random.Range(-1, -3), 1) * Time.deltaTime);
     }
 }
