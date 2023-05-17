@@ -5,11 +5,13 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject bossBounds, bossObj;
+    [SerializeField] GameObject bossBounds, bossObj, leftTent, rightTent;
     [SerializeField] Transform bossSpawn;
 
+    Enemy myEnemy;
     GameObject thisBoss;
     bool hasSpawned;
+    int health;
 
     void Start()
     {
@@ -20,6 +22,16 @@ public class BossController : MonoBehaviour
     void Update()
     {
         UpdateUI();
+        if(thisBoss!=null)
+        {
+            health = myEnemy.health;
+            if(health < 300)
+            {
+                leftTent.SetActive(true);
+                rightTent.SetActive(true);
+            }  
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -28,6 +40,7 @@ public class BossController : MonoBehaviour
             bossBounds.SetActive(true);
             //sliderObj.SetActive(true);
             thisBoss = Instantiate(bossObj, bossSpawn.position, Quaternion.identity);
+            myEnemy = thisBoss.GetComponent<Enemy>();
             hasSpawned = true;
         }
     }
@@ -38,6 +51,8 @@ public class BossController : MonoBehaviour
         if(thisBoss == null)
         {
             bossBounds.SetActive(false);
+            leftTent.SetActive(false);
+            rightTent.SetActive(false);
         }
     }
 }
