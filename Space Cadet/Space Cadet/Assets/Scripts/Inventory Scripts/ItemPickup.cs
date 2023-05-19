@@ -10,6 +10,7 @@ public class ItemPickup : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             InventoryManager.Instance.Add(item);
+            InventoryManager.Instance.ListItems();
             Destroy(gameObject);
         }
     }

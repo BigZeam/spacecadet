@@ -35,7 +35,8 @@ public class PlayerController : MonoBehaviour
     public Slider ammoSlider;
     public Text ammoText;
     public Text moneyText;
-    public GameObject[] UIhearts;
+    public Image[] UIhearts;
+    [SerializeField] Sprite fullHeart, emptyHeart;
 
     [Header("Stats")]
     public int health;
@@ -237,7 +238,7 @@ public class PlayerController : MonoBehaviour
         {
             if(health > i)
             {
-                UIhearts[i].SetActive(true);
+                UIhearts[i].sprite = fullHeart;
             }
         }
     }
@@ -262,11 +263,11 @@ public class PlayerController : MonoBehaviour
         {
             if(health > i)
             {
-                UIhearts[i].SetActive(true);
+                UIhearts[i].sprite = fullHeart;
             }
             else 
             {
-                UIhearts[i].SetActive(false);
+                UIhearts[i].sprite = emptyHeart;
             }
         }
     }
