@@ -8,6 +8,7 @@ public class ProceduralGeneration : MonoBehaviour
     [SerializeField] int numSpawners, spawnerDist;
 
     [SerializeField] GameObject comp, bossRuins, gunRuins;
+    [SerializeField] int ruinBounds, bossBounds, spawnBounds;
 
     bool canChangeHeight;
     int prevSpawnerdist;
@@ -22,7 +23,7 @@ public class ProceduralGeneration : MonoBehaviour
     {
         prevSpawnerdist = 0;
         bossSpawnPos = Random.Range(1, 11);
-        flatZone = 5;
+        flatZone = ruinBounds;
         FindBossSpawnPosition();
         Generation();
         
@@ -98,22 +99,22 @@ public class ProceduralGeneration : MonoBehaviour
                     prevSpawnerdist = x;
                 }
             }
-            if(x == 83)
+            if(x == (spawnBounds + 8))
             {
                 comp.transform.position = new Vector3(x + xOffset, height + yOffset + .5f, 0);
                 
             }
-            if(x == 95)
+            if(x == spawnBounds + flatMod)
             {
-                flatZone = 150;
+                flatZone = bossBounds;
                 flatMod = 20;
             }
-            if(x == 30)
+            if(x == ruinBounds + flatMod)
             {
-                flatZone = 75;
+                flatZone = spawnBounds;
                 flatMod = 20;
             }
-            if(x == 14)
+            if(x == ruinBounds + 7)
             {
                     if(earlySpawn)
                         spawnObj(bossRuins, x, height + ruinScaler);
@@ -121,7 +122,7 @@ public class ProceduralGeneration : MonoBehaviour
                         spawnObj(gunRuins, x, height + ruinScaler);
 
             }
-            if(x == 163)
+            if(x == bossBounds + 7)
             {
                 if(!earlySpawn)
                         spawnObj(bossRuins, x, height + ruinScaler);

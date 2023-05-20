@@ -10,11 +10,13 @@ public class HelperBot : MonoBehaviour
 
     [SerializeField] TMP_Text helperBotText;
     [SerializeField] List<string> botMessages = new List<string>();
+    [SerializeField] Sprite onSprite;
+    SpriteRenderer sr;
     
     bool canContinue;
     void Start()
     {
-        
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -35,14 +37,17 @@ public class HelperBot : MonoBehaviour
             if(currency.count >= 5)
             {
                 incValue();
+                sr.sprite = onSprite;
             }
         }
         else if(choice == 7)
         {
+            CancelInvoke();
             Invoke(nameof(incValue),10f);
         }
         else if(choice > 8)
         {
+            CancelInvoke();
             Invoke(nameof(incValue),10f);
         }
         else 

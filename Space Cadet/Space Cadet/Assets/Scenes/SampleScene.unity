@@ -7385,7 +7385,7 @@ MonoBehaviour:
   m_Content: {fileID: 1737040702}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -9422,9 +9422,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f19e047b64bef44873ee8de76fcfc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 180
+  width: 400
   height: 30
-  xOffset: -80
+  xOffset: -200
   yOffset: -35
   minStoneheight: 3
   maxStoneHeight: 8
@@ -9441,6 +9441,9 @@ MonoBehaviour:
   comp: {fileID: 838997924}
   bossRuins: {fileID: 4393889874180375713, guid: 32e8b0fa74ea4394a92550dcc38bd83f, type: 3}
   gunRuins: {fileID: 6941414262638134604, guid: d50110d0277d2c6449e1c756a772f45f, type: 3}
+  ruinBounds: 5
+  bossBounds: 380
+  spawnBounds: 190
   ruinScaler: 0.5
 --- !u!4 &652147130
 Transform:
@@ -11482,7 +11485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007066076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.23, y: -17.66, z: 0}
+  m_LocalPosition: {x: 0.23, y: -34.2, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12275,7 +12278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 448, y: 60.82}
+  m_AnchoredPosition: {x: 448, y: 60.819946}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1077912161
@@ -12317,7 +12320,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1671399793}
   m_FillRect: {fileID: 1340629562}
   m_HandleRect: {fileID: 1671399792}
@@ -12325,7 +12328,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.044
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13834,7 +13837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 276, y: 18.248}
+  m_AnchoredPosition: {x: 276, y: 18.248047}
   m_SizeDelta: {x: 139.16, y: 36.496796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356006328
@@ -18892,7 +18895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroid: {fileID: 2113336831052772154, guid: 04af45dc149e8404bafda7f899a2a1a6, type: 3}
   bounds: {x: 50, y: 90}
-  timebounds: {x: 30, y: 50}
+  timebounds: {x: 5, y: 10}
 --- !u!4 &1999198783
 Transform:
   m_ObjectHideFlags: 0
@@ -19301,12 +19304,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 71.65062, y: 21.504852}
-      - {x: 11.735244, y: 24.266838}
-      - {x: -79.64982, y: 17.589533}
-      - {x: -80.242165, y: -19.669806}
-      - {x: 99.80773, y: -20.35456}
-      - {x: 99.87959, y: 9.189296}
+    - - {x: 129.05078, y: 35.171562}
+      - {x: -29.720428, y: 32.466858}
+      - {x: -199.46126, y: 17.589533}
+      - {x: -200.02621, y: -30.012327}
+      - {x: 199.67818, y: -29.829853}
+      - {x: 199.44914, y: 12.555257}
 --- !u!4 &2076801834
 Transform:
   m_ObjectHideFlags: 0
@@ -19698,7 +19701,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 413294471}
   m_FillRect: {fileID: 326361452}
   m_HandleRect: {fileID: 413294470}
@@ -20004,6 +20007,7 @@ MonoBehaviour:
   - 'You still want more? '
   - 'You need more help? '
   - 'You know who needs help? Steven! '
+  onSprite: {fileID: -649010009, guid: f5fe16a88b6368c4f98c9d8b32d8fb7a, type: 3}
 --- !u!212 &2147369871
 SpriteRenderer:
   m_ObjectHideFlags: 0
