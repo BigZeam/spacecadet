@@ -11,9 +11,13 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] Transform itemContent;
     [SerializeField] GameObject inventoryItem;
+    [SerializeField] Item healthPot;
+    PlayerController pc;
+    GameManager gm;
 
     private void Awake() {
         Instance = this;
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public void Add(Item item)
@@ -57,10 +61,24 @@ public class InventoryManager : MonoBehaviour
             var itemName = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var itemNum = obj.transform.Find("Num/NumText").GetComponent<TMP_Text>();
+            var buttonObj = obj.transform.Find("ConsumableButton");
+
+            buttonObj.gameObject.SetActive(item.consumable);
 
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
             itemNum.text = item.count.ToString();
+            
+            buttonObj.GetComponent<Button>().onClick.AddListener(GivePlayerHealth);
+        }
+    }
+    void GivePlayerHealth()
+    {
+        if(pc.GetHealth() < 3)
+        {
+            pc.IncHealth();
+            Remove(healthPot);
+            Invoke("ListItems",.5f);
         }
     }
 }

@@ -1,23 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BossController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject bossBounds, bossObj, leftTent, rightTent;
+    [SerializeField] GameObject bossBounds, bossObj, leftTent, rightTent, dialogueBoxObj;
     [SerializeField] Transform bossSpawn;
 
+    [SerializeField] TMP_Text dialogueText;
+
+    [SerializeField] string[] myDialogue;
+
     Enemy myEnemy;
-    GameObject thisBoss;
+    GameObject thisBoss, bossBar;
     bool hasSpawned;
     int health;
+    Slider healthSlider;
 
-    void Start()
-    {
-        //healthSlider.maxValue = bossObj.GetComponent<Enemy>().health;
+
+    private void Awake() {
+        bossBar = GameObject.FindGameObjectWithTag("BossBar");
+        var sliderObj = bossBar.transform.Find("BossHPBar").GetComponent<Slider>();
+        healthSlider = sliderObj;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -42,17 +50,28 @@ public class BossController : MonoBehaviour
             thisBoss = Instantiate(bossObj, bossSpawn.position, Quaternion.identity);
             myEnemy = thisBoss.GetComponent<Enemy>();
             hasSpawned = true;
+            bossBar.SetActive(true);
+            healthSlider.maxValue = myEnemy.health;
+            dialogueBoxObj.SetActive(true);
+            Invoke(nameof(ShutOffBox), 2f);
         }
     }
     void UpdateUI()
     {
-        //healthSlider.value = bossObj.GetComponent<Enemy>().health;
+
+        if(thisBoss!=null)
+            healthSlider.value = myEnemy.health;
 
         if(thisBoss == null)
         {
+            bossBar.SetActive(false);
             bossBounds.SetActive(false);
             leftTent.SetActive(false);
             rightTent.SetActive(false);
         }
+    }
+    void ShutOffBox()
+    {
+        dialogueBoxObj.SetActive(false);
     }
 }

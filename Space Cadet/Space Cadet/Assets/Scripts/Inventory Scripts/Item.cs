@@ -9,6 +9,7 @@ public class Item : ScriptableObject {
     public Sprite icon;
     public string itemName;
     public int count;
+    public bool consumable;
 
     public void ResetCount()
     {

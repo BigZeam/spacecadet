@@ -66,7 +66,7 @@ public class ProceduralGeneration : MonoBehaviour
             }
             else
             {
-                if(Random.Range(1,11) < 2 && canChangeHeight)
+                if(Random.Range(1,15) < 2 && canChangeHeight)
                 {
                     spawnObj(flowerPlant, x, height + 1.45f);
                 }
@@ -75,28 +75,28 @@ public class ProceduralGeneration : MonoBehaviour
 
             if(canChangeHeight)
             {
-                int randomizer = Random.Range(1, 11);
+                int randomizer = Random.Range(1, 24);
                 if(randomizer < 2)
                 {
                     spawnObj(platform, x, height + 1.25f);
                 }
-                if(randomizer == 5 && numSpawners < 7 && canSpawn)
+                if(randomizer == 5 && numSpawners < 28 && canSpawn && (x < (spawnBounds - 10) || x > (spawnBounds+flatMod+15)))
                 {
                     spawnObj(swarmSpawner, x, height + 1.45f);
                     numSpawners++;
-                    prevSpawnerdist = x;
+                    prevSpawnerdist = Random.Range(7, 14);
                 }
-                if(randomizer == 6 && numSpawners < 6 && canSpawn)
+                if(randomizer == 6 && numSpawners < 18 && canSpawn && (x < (spawnBounds - 30) || x > (spawnBounds+flatMod+25)))
                 {
                     spawnObj(honingSpawner, x, height + 4);
                     numSpawners++;
-                    prevSpawnerdist = x;
-                }
-                if(randomizer == 7 && numSpawners < 5 && canSpawn)
+                    prevSpawnerdist = Random.Range(10, 18);
+               }
+                if(randomizer == 7 && numSpawners < 20 && canSpawn && (x < (spawnBounds - 60) || x > (spawnBounds+flatMod+60)))
                 {
                     spawnObj(flierSpawner, x, height + 5);
                     numSpawners++;
-                    prevSpawnerdist = x;
+                    prevSpawnerdist = Random.Range(6, 18);
                 }
             }
             if(x == (spawnBounds + 8))
