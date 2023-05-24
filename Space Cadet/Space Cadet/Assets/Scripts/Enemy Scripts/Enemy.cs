@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] int jumpForce;
     public LayerMask groundLayer;
     public Transform rayStartTransform;
+    [SerializeField] AudioClip enemyHitSound;
+    [SerializeField] AudioClip enemyAttackSound;
     
     
     //public int damage;
@@ -136,7 +138,7 @@ public class Enemy : MonoBehaviour
             //bulletPos.LookAt(playerObj.transform.position);
             //Instantiate(enemyBullet, bulletPos.position, bulletPos.rotation);
         }
-        
+        AudioManager.Instance.Play(enemyAttackSound);
         curState = EnemyBehaviour.Recover;
         //CancelInvoke();
         Invoke(nameof(SetChase), recoverTime);
@@ -149,6 +151,7 @@ public class Enemy : MonoBehaviour
         //CancelInvoke();
         Invoke(nameof(Stun), stunTime);
         CheckHealth();
+        AudioManager.Instance.Play(enemyHitSound);
     }
 
     private void CheckHealth()

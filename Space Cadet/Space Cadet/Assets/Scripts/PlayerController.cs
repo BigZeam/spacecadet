@@ -50,6 +50,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Color hitColor;
     [SerializeField] SpriteRenderer sr;
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip shootEffect;
+    [SerializeField] AudioClip reloadSound;
+    [SerializeField] AudioClip playerHitSound;
+    [SerializeField] AudioClip jumpSound;
+
     
     //Resources;
     
@@ -118,6 +124,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
                 jumpsLeft--;
+                AudioManager.Instance.Play(jumpSound);
             }
                                
         }
@@ -170,6 +177,8 @@ public class PlayerController : MonoBehaviour
                     ReloadGun();
                 }
                 tempBullet.GetComponent<Rigidbody2D>().AddForce(tempBullet.transform.right * gunSlot1.bulletSpeed);
+
+                AudioManager.Instance.Play(shootEffect);
             }
        
         }
@@ -209,6 +218,7 @@ public class PlayerController : MonoBehaviour
         readyForNextShot = Time.time + reloadSpeed;
         ammo = gunSlot1.ammoCount;
         SetAmmoUI();
+        AudioManager.Instance.Play(reloadSound);
     }
     public void SetAmmoUI()
     {
@@ -227,6 +237,7 @@ public class PlayerController : MonoBehaviour
             invulnerableSequence.Append(sr.DOColor(hitColor, invulnerabilityTimer/2));
             invulnerableSequence.Append(sr.DOColor(new Color(255,255,255,1), invulnerabilityTimer/2));
 
+            AudioManager.Instance.Play(playerHitSound);
 
             if(health <= 0)
             {

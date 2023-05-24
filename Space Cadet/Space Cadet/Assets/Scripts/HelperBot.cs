@@ -11,6 +11,7 @@ public class HelperBot : MonoBehaviour
     [SerializeField] TMP_Text helperBotText;
     [SerializeField] List<string> botMessages = new List<string>();
     [SerializeField] Sprite onSprite;
+    [SerializeField] AudioClip helperBotSound;
     SpriteRenderer sr;
     
     bool canContinue;
@@ -26,6 +27,7 @@ public class HelperBot : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F) && canContinue)
         {
             NextText();
+            AudioManager.Instance.Play(helperBotSound);
         }
     }
 

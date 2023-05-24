@@ -9,8 +9,10 @@ public class UpgradeComputer : MonoBehaviour
     bool canInteract;
     bool showPanel;
     bool canShop;
+
     [Header("General Shop Thigs")]
     [SerializeField] Item currency;
+    [SerializeField] AudioClip uiBlipSound;
     public PlayerController playerObj;
     ComputerManager cm;
     GameManager gm;
@@ -213,7 +215,7 @@ public class UpgradeComputer : MonoBehaviour
 
         if(itemList[realChoice].GetCost() <= currency.count)
         {
-        
+        AudioManager.Instance.Play(uiBlipSound);
         currency.count = currency.count - itemList[realChoice].GetCost();
         itemSlots[choice -1].SetActive(false);
         switch(itemList[realChoice].name)
