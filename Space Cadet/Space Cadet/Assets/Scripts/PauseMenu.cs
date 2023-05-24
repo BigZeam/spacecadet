@@ -45,4 +45,8 @@ public class PauseMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    public void ResartLevel(int level)
+    {
+        SceneManager.LoadScene(level);
+    }
 }

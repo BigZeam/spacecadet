@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,13 +12,14 @@ public class GameManager : MonoBehaviour
     public GameObject playerObj;
     PlayerController pc;
     Gun startingGun;    
-    bool showHealth = true, showRad = true;
+    bool showHealth = true, showRad = false, pastFrame1 = false;
 
     public Slider timerSlider;
     public int globalTimer;
     public int playerLevel {get; private set;}
-    bool canSetTimer;
+    bool canSetTimer, canLowerTimer;
     [SerializeField] Animator effectAnim;
+    [SerializeField] GameObject losePanelObj;
 
     [SerializeField] List<Item> allPossibleItems = new List<Item>();
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         startingGun.RestoreDefaults();
         pc = playerObj.GetComponent<PlayerController>();
         ResetItemCounts();
+        Invoke(nameof(GameHasStarted), 5f);
     }
 
     // Update is called once per frame
@@ -35,8 +38,12 @@ public class GameManager : MonoBehaviour
     {
         if(canSetTimer)
             SetGlobalTimer();
-
+        else
+        {
+            LowerRadiationLevels();
+        }
         CheckForAnim();
+        timerSlider.value = globalTimer;
     }
 
     void SetGlobalTimer()
@@ -47,7 +54,7 @@ public class GameManager : MonoBehaviour
 
         if(globalTimer <= 0)
         {
-            //Debug.Log("LOS");
+            LoseGame();
         }
     }
 
@@ -59,7 +66,7 @@ public class GameManager : MonoBehaviour
             showHealth = false;
             Invoke(nameof(HealthTimer), 15f);
         }
-        if(timerSlider.value < 10000 && showRad)
+        if(timerSlider.value < 10000 && showRad && pastFrame1)
         {
             effectAnim.SetTrigger("LowRadiation");
             showRad = false;
@@ -77,10 +84,10 @@ public class GameManager : MonoBehaviour
     public void SetTimer(bool b)
     {
         canSetTimer = b;
-        if(!canSetTimer)
+        if(!canSetTimer && pastFrame1)
         {
             globalTimer = (int)timerSlider.maxValue;
-            timerSlider.value = timerSlider.maxValue;
+            timerSlider.DOValue(timerSlider.maxValue, 1f, true);
             showRad = true;
         }
     }
@@ -91,5 +98,19 @@ public class GameManager : MonoBehaviour
     void HealthTimer()
     {
         showHealth = true;
+    }
+    void GameHasStarted()
+    {
+        pastFrame1 = true;
+    }
+    public void LoseGame()
+    {
+        losePanelObj.SetActive(true);
+    }
+    void LowerRadiationLevels()
+    {
+        globalTimer+=100;
+        if(globalTimer > timerSlider.maxValue)
+            globalTimer = (int)timerSlider.maxValue;
     }
 }

@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyToSpawn: {fileID: 7315926997567222457, guid: 11603e0003e4f104da0499cbb12558dd, type: 3}
   spawnedEnemies: []
-  thisSpawnerLevel: 3
+  thisSpawnerLevel: 1
   spawnerDelay: 3
 --- !u!50 &4382622206845284940
 Rigidbody2D:

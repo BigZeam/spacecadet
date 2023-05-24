@@ -66,6 +66,7 @@ public class HelperBot : MonoBehaviour
         {
             canContinue = true;
             helperBotText.gameObject.transform.parent.gameObject.SetActive(true);
+            helperBotText.gameObject.transform.parent.gameObject.GetComponent<ScalePunchAwake>().PunchScaleMe();
         }
     }
     private void OnTriggerExit2D(Collider2D other) {

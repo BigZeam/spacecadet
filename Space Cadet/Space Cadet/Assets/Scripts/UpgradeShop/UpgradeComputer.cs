@@ -84,6 +84,10 @@ public class UpgradeComputer : MonoBehaviour
                 playerObj.SetCanShoot(false);
                 showPanel = !showPanel;
                 compPanel.SetActive(showPanel);
+                if(showPanel)
+                {
+                    compPanel.GetComponent<ScalePunchAwake>().PunchScaleMe();
+                }
                 //Invoke("ShopResesttime", shoptime);
                 for(int i = 0; i < itemSlots.Count; i++)
                 {
@@ -267,6 +271,6 @@ public class UpgradeComputer : MonoBehaviour
         }
             itemList[realChoice].SetCost(10);
         }
-        
+        InventoryManager.Instance.ListItems();
     }
 }

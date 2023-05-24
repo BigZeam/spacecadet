@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,7 +43,12 @@ public class PlayerController : MonoBehaviour
     public int health;
     public int type;
     [SerializeField] Animator anim;
+    [SerializeField] GameManager gm;
     int money;
+    bool canLoseHealth = true;
+    [SerializeField] float invulnerabilityTimer;
+    [SerializeField] Color hitColor;
+    [SerializeField] SpriteRenderer sr;
 
     
     //Resources;
@@ -64,6 +70,9 @@ public class PlayerController : MonoBehaviour
         gunSr.sprite = gunSlot1.gunSprite;
         reloadSpeed = gunSlot1.fireRate * 4;
         moneyText.text = money.ToString();
+        gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        //sr = this.gameObject.GetComponent<SpriteRenderer>();
+        DOTween.Init();
     }
 
     // Update is called once per frame
@@ -210,16 +219,29 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeHealth()
     {
-        
-        health--;
-        Debug.Log(health);
-        if(health <= 0)
+        if(canLoseHealth)
         {
-            Debug.Log("Lose");
-        }
-        SetHealthUI();
-    }
+            health--;
+            //tween health anim
+            Sequence invulnerableSequence = DOTween.Sequence();
+            invulnerableSequence.Append(sr.DOColor(hitColor, invulnerabilityTimer/2));
+            invulnerableSequence.Append(sr.DOColor(new Color(255,255,255,1), invulnerabilityTimer/2));
 
+
+            if(health <= 0)
+            {
+                gm.LoseGame();
+            }
+            SetHealthUI();
+            canLoseHealth = false;
+            Invoke(nameof(Invulnerability), invulnerabilityTimer);
+        }
+
+    }
+    void Invulnerability()
+    {
+        canLoseHealth = true;
+    }
     public int GetHealth()
     {
         return health;

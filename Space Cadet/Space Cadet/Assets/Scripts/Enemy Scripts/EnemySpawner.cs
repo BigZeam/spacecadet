@@ -17,6 +17,14 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnedEnemies = new List<GameObject>();
         gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        if(transform.position.x < 100 || transform.position.x >  210)
+        {
+            thisSpawnerLevel = 2;
+        }
+        else if (transform.position.x < 80 || transform.position.x >  280)
+        {
+            thisSpawnerLevel = 3;
+        }
     }
 
     // Update is called once per frame
