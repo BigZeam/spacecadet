@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 public class HelperBot : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -12,12 +13,17 @@ public class HelperBot : MonoBehaviour
     [SerializeField] List<string> botMessages = new List<string>();
     [SerializeField] Sprite onSprite;
     [SerializeField] AudioClip helperBotSound;
-    SpriteRenderer sr;
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] Transform beemoSpriteTransform;
+
+    [SerializeField] Vector3 punchVal;
+    [SerializeField] float punchDuration, elasticityVal;
+    [SerializeField] int vibratoVal;
     
     bool canContinue;
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -40,7 +46,11 @@ public class HelperBot : MonoBehaviour
             {
                 incValue();
                 sr.sprite = onSprite;
-            }
+                Sequence makeUpright = DOTween.Sequence();
+                makeUpright.Append(beemoSpriteTransform.DOLocalRotate(new Vector3(0, 0, 0), punchDuration));
+                makeUpright.Append(beemoSpriteTransform.DOPunchRotation(punchVal, punchDuration, vibratoVal, elasticityVal));
+                
+            }   
         }
         else if(choice == 7)
         {

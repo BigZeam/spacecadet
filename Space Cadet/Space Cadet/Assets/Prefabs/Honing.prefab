@@ -144,7 +144,7 @@ MonoBehaviour:
     m_Bits: 0
   rayStartTransform: {fileID: 0}
   enemyHitSound: {fileID: 8300000, guid: 1737f0d2150e69b46a9398fe240a9639, type: 3}
-  enemyAttackSound: {fileID: 0}
+  enemyAttackSound: {fileID: 8300000, guid: 24a1206a3f2c18749a920b61cf6e2f0f, type: 3}
 --- !u!61 &1203342720100643354
 BoxCollider2D:
   m_ObjectHideFlags: 0
