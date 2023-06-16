@@ -46,7 +46,7 @@ public class ProceduralGeneration : MonoBehaviour
             int maxStoneSpawnDistance = height - maxStoneHeight;
             int totalStoneSpawnDistance = Random.Range(minStoneSpawnDistance, maxStoneSpawnDistance);
 
-            canSpawn = x > (prevSpawnerdist +spawnerDist);
+            canSpawn = x > (prevSpawnerdist + spawnerDist);
             //Perlin noise.
             for (int y = 0; y < height; y++)//This will help spawn a tile on the y axis
             {
@@ -84,19 +84,22 @@ public class ProceduralGeneration : MonoBehaviour
                 {
                     spawnObj(swarmSpawner, x, height + 1.45f);
                     numSpawners++;
-                    prevSpawnerdist = Random.Range(7, 14);
+                    spawnerDist = Random.Range(7, 12);
+                    prevSpawnerdist = x;
                 }
                 if(randomizer == 6 && numSpawners < 18 && canSpawn && (x < (spawnBounds - 30) || x > (spawnBounds+flatMod+25)))
                 {
                     spawnObj(honingSpawner, x, height + 4);
                     numSpawners++;
-                    prevSpawnerdist = Random.Range(10, 18);
+                    spawnerDist = Random.Range(8, 14);
+                    prevSpawnerdist = x;
                }
                 if(randomizer == 7 && numSpawners < 20 && canSpawn && (x < (spawnBounds - 60) || x > (spawnBounds+flatMod+60)))
                 {
                     spawnObj(flierSpawner, x, height + 5);
                     numSpawners++;
-                    prevSpawnerdist = Random.Range(6, 18);
+                    spawnerDist = Random.Range(10, 18);
+                    prevSpawnerdist = x;
                 }
             }
             if(x == (spawnBounds + 8))

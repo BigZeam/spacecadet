@@ -26,7 +26,13 @@ public class Asteroid : MonoBehaviour
         Instantiate(asteroidParticles, this.transform.position, Quaternion.identity);        
         Destroy(this.gameObject);
     }
+    
     private void OnCollisionEnter2D(Collision2D other) {
+
+        if(other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerController>().ChangeHealth();
+        }
         Instantiate(asteroidParticles, this.transform.position, Quaternion.identity);        
         Destroy(this.gameObject);
     }

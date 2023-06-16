@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 957652453135061448}
   - component: {fileID: 957652453135061449}
   - component: {fileID: 957652453135061454}
-  m_Layer: 0
+  - component: {fileID: 8359712831078783351}
+  m_Layer: 12
   m_Name: Kron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,3 +165,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 4fbd550c72ec154409b38deabab5bb5a, type: 2}
+  pickupSound: {fileID: 8300000, guid: 088c06eae2cf8e54fa293c8a53acc2f5, type: 3}
+--- !u!114 &8359712831078783351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957652453135061455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33946b7e2a1a92148985653a8eb05cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchVal: {x: 0.3, y: 0.3, z: 0.5}
+  durationVal: 0.75
+  elasticityVal: 0.5
+  vibrato: 1

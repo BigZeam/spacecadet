@@ -84,21 +84,35 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Jump();
-        if(canShoot)
-            Shoot();
+        if(!gm.isGameOver)
+        {
+            Jump();
+            if(canShoot)
+                Shoot();
+        }
+
     }
 
     private void FixedUpdate()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
-        Move();
+        if(!gm.isGameOver)
+        {
+            moveInput = Input.GetAxisRaw("Horizontal");
+            Move();  
+        }
+        else 
+        {
+            sr.sprite = null;
+            anim = null;
+        }
+
     }
 
     public void Move()
     {
         Flip();
         rb2d.velocity = new Vector2(moveInput * moveSpeed, rb2d.velocity.y);
+        //rb2d.AddForce(new Vector2(moveInput, 0) * moveSpeed);
         anim.SetBool("isMoving", (moveInput != 0));
     }
 
@@ -123,6 +137,7 @@ public class PlayerController : MonoBehaviour
             if (jumpsLeft > 0)
             {
                 rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+                //rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 jumpsLeft--;
                 AudioManager.Instance.Play(jumpSound);
             }

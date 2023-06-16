@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Classic
   m_EditorClassIdentifier: 
   name: Classic
-  gunSprite: {fileID: -2124430210, guid: d4f80875faf6bea4eb824384a84a4e88, type: 3}
+  gunSprite: {fileID: 517050789, guid: c5f262bdfb21ab5469291c47889e6dc6, type: 3}
   knockback: 0
-  ammoCount: 20
-  defaultAmmoCount: 20
-  damage: 25
+  ammoCount: 15
+  defaultAmmoCount: 15
+  damage: 20
   defaultDamage: 20
   bulletSpeed: 500
   defaultBulletSpeed: 500
-  fireRate: 0.45
+  fireRate: 0.5
   defaultFireRate: 0.5

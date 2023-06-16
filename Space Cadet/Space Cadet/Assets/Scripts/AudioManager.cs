@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
@@ -59,4 +60,5 @@ public class AudioManager : MonoBehaviour
 		EffectsSource.clip = clips[randomIndex];
 		EffectsSource.Play();
 	}
+
 }

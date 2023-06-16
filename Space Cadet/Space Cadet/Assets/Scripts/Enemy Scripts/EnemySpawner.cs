@@ -12,11 +12,15 @@ public class EnemySpawner : MonoBehaviour
     public float spawnerDelay;
     bool spawning;
     GameManager gm;
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] Sprite[] spawnerSprites;
+    [SerializeField] int health;
 
     void Start()
     {
         spawnedEnemies = new List<GameObject>();
         gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+        //sr = GetComponent<SpriteRenderer>();
         if(transform.position.x < 100 || transform.position.x >  210)
         {
             thisSpawnerLevel = 2;
@@ -66,4 +70,22 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    public void ChangeHealth(int damage)
+    {
+        health -= damage;
+
+        if(health >= 200)
+        {
+            sr.sprite = spawnerSprites[0];
+        }
+
+        else if(health > 150)
+        {
+            sr.sprite = spawnerSprites[1];
+        }
+        else if(health > 75)
+        {
+            sr.sprite = spawnerSprites[2];
+        }
+    }
 }

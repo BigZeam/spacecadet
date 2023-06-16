@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724bb31a177a4d148b73c87ec600748e, type: 3}
   m_Name: Tron
   m_EditorClassIdentifier: 
-  icon: {fileID: 1796731046, guid: e420be617960c584e99a62436a2a618b, type: 3}
-  itemName: Tron
+  icon: {fileID: 967116863, guid: d91493b6a81bda74cb26611e76b74f0b, type: 3}
+  itemName: Tronite
   count: 1
+  consumable: 0

@@ -9,9 +9,13 @@ public class ResourceCollectable : MonoBehaviour
     bool hasTarget;
     Vector3 targetPosition;
     float moveSpeed = 5f;
+    ScalePunchAwake psm;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        psm = GetComponent<ScalePunchAwake>();
+        if(psm!=null)
+            psm.PunchScaleMe();
     }
 
     // Update is called once per frame

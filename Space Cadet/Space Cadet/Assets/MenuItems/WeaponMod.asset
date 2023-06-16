@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WeaponMod
   m_EditorClassIdentifier: 
   Itemname: Gun Mod
-  splash: {fileID: -1665050019, guid: f5fe16a88b6368c4f98c9d8b32d8fb7a, type: 3}
+  splash: {fileID: -314583330, guid: 00ccd3c6d53d9734dbab5c44cc435e30, type: 3}
   name: 12
   startingCost: 5

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ClipSize
   m_EditorClassIdentifier: 
   Itemname: Ammo Size
-  splash: {fileID: 970440001, guid: d4f80875faf6bea4eb824384a84a4e88, type: 3}
+  splash: {fileID: 684202854, guid: 00ccd3c6d53d9734dbab5c44cc435e30, type: 3}
+  name: 0
   startingCost: 10

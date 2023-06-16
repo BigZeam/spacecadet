@@ -61,6 +61,7 @@ public class UpgradeComputer : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             canInteract = true;
+            FillSlots();
             //GenerateItemSlot();
         }
             
@@ -71,6 +72,7 @@ public class UpgradeComputer : MonoBehaviour
             canInteract = false;
             compPanel.SetActive(false);
             playerObj.SetCanShoot(true);
+            FillSlots();
             //GenerateItemSlot();
         }
             
@@ -89,6 +91,7 @@ public class UpgradeComputer : MonoBehaviour
                 if(showPanel)
                 {
                     compPanel.GetComponent<ScalePunchAwake>().PunchScaleMe();
+                    FillSlots();
                 }
                 //Invoke("ShopResesttime", shoptime);
                 for(int i = 0; i < itemSlots.Count; i++)
@@ -178,7 +181,11 @@ public class UpgradeComputer : MonoBehaviour
         return timesUpgraded[num] * 10;
     }
 
-
+    public void SwitchCurrency(Item newCurrency)
+    {
+        currency = newCurrency;
+        FillSlots();
+    }
 
     void ShopResesttime()
     {
@@ -217,7 +224,7 @@ public class UpgradeComputer : MonoBehaviour
         {
         AudioManager.Instance.Play(uiBlipSound);
         currency.count = currency.count - itemList[realChoice].GetCost();
-        itemSlots[choice -1].SetActive(false);
+        //itemSlots[choice -1].SetActive(false);
         switch(itemList[realChoice].name)
         {
             case UpgradeItem.ItemType.ClipSize:
@@ -235,6 +242,7 @@ public class UpgradeComputer : MonoBehaviour
             case UpgradeItem.ItemType.HealthUp:
             //healthUP
             playerObj.IncHealth();
+            itemList[realChoice].SetCost(-5);
             break;
             case UpgradeItem.ItemType.ReloadSpeed:
             //reloadSpeed
@@ -274,5 +282,6 @@ public class UpgradeComputer : MonoBehaviour
             itemList[realChoice].SetCost(10);
         }
         InventoryManager.Instance.ListItems();
+        FillSlots();
     }
 }

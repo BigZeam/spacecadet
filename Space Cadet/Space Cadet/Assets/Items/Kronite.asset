@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 724bb31a177a4d148b73c87ec600748e, type: 3}
-  m_Name: Box
+  m_Name: Kronite
   m_EditorClassIdentifier: 
-  icon: {fileID: 391506164, guid: d4f80875faf6bea4eb824384a84a4e88, type: 3}
-  itemName: Box
+  icon: {fileID: -987801523, guid: 07315a7eeacf7534c9bcd1893af305e6, type: 3}
+  itemName: Kronite
   count: 1
+  consumable: 0

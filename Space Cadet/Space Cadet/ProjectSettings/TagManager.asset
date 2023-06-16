@@ -12,6 +12,8 @@ TagManager:
   - FlowerBase
   - Computer
   - BossBar
+  - Spawner
+  - Effect
   layers:
   - Default
   - TransparentFX
@@ -24,8 +26,8 @@ TagManager:
   - Bullet
   - Player
   - Computer
-  - 
-  - 
+  - Minimap
+  - Magnet
   - 
   - 
   - 

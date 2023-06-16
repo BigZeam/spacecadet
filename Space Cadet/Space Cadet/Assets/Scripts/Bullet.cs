@@ -6,6 +6,12 @@ public class Bullet : MonoBehaviour
 {
     Gun owner;
     [SerializeField] GameObject explodeParticle;
+
+    private void Start()
+    {
+        Invoke(nameof(LifeEnder), 5f);
+    }
+
     void Update()
     {
         this.transform.Translate((transform.forward*Time.deltaTime));
@@ -35,6 +41,15 @@ public class Bullet : MonoBehaviour
             Instantiate(explodeParticle, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+        if(other.gameObject.tag == "Spawner")
+        {
+            other.gameObject.GetComponent<SpawnerHealth>().ChangeHealth(owner.damage);
+            Destroy(this.gameObject);
+        }
 
+    }
+    void LifeEnder()
+    {
+        Destroy(this.gameObject);
     }
 }

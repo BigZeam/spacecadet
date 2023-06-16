@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlantGrowth
   m_EditorClassIdentifier: 
   Itemname: Plant Growth
-  splash: {fileID: -1535576967, guid: f5fe16a88b6368c4f98c9d8b32d8fb7a, type: 3}
+  splash: {fileID: -1938487055, guid: 00ccd3c6d53d9734dbab5c44cc435e30, type: 3}
   name: 14
   startingCost: 30
