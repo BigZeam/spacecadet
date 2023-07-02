@@ -48,6 +48,7 @@ public class ProceduralGeneration : MonoBehaviour
 
             canSpawn = x > (prevSpawnerdist + spawnerDist);
             //Perlin noise.
+            int randomizer = Random.Range(1, 24);
             for (int y = 0; y < height; y++)//This will help spawn a tile on the y axis
             {
                 if (y < totalStoneSpawnDistance)
@@ -66,16 +67,17 @@ public class ProceduralGeneration : MonoBehaviour
             }
             else
             {
-                if(Random.Range(1,15) < 2 && canChangeHeight)
-                {
-                    spawnObj(flowerPlant, x, height + 1.45f);
-                }
+
                 spawnObj(grass, x, height);
             }
 
             if(canChangeHeight)
             {
-                int randomizer = Random.Range(1, 24);
+                                
+                if(randomizer == 2 || randomizer == 3)
+                {
+                    spawnObj(flowerPlant, x, height + 1.45f);
+                }
                 if(randomizer < 2)
                 {
                     spawnObj(platform, x, height + 1.25f);

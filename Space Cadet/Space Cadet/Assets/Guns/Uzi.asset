@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Uzi
   m_EditorClassIdentifier: 
   name: Uzi
-  gunSprite: {fileID: -786994838, guid: c5f262bdfb21ab5469291c47889e6dc6, type: 3}
+  gunSprite: {fileID: 513667782, guid: ce5eccaf45b0bb8469912e24ab754837, type: 3}
   knockback: 0
   ammoCount: 60
   defaultAmmoCount: 50

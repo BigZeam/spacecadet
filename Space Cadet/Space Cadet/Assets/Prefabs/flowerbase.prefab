@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 487882891, guid: 4e8da0da3ec7cc24aa533afd712d38f5, type: 3}
+  m_Sprite: {fileID: -307121110, guid: f5fe16a88b6368c4f98c9d8b32d8fb7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,6 +156,8 @@ MonoBehaviour:
   flowerParticles: {fileID: 846195940146778479}
   growTime: 10000
   flowerPos: {fileID: 846195940058912244}
+  coolFlower: 0
+  popEffect: {fileID: 8300000, guid: f8a61b9bd3889064584f33747089843c, type: 3}
 --- !u!1 &846195940058912245
 GameObject:
   m_ObjectHideFlags: 0
@@ -5074,7 +5076,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2094322033, guid: e420be617960c584e99a62436a2a618b, type: 3}
+  m_Sprite: {fileID: -1050744314, guid: f5fe16a88b6368c4f98c9d8b32d8fb7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5143,6 +5145,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: minimap obj
       objectReference: {fileID: 0}
+    - target: {fileID: 2437041382413209923, guid: 254767a72a396b345845878d713a3fd1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6917169896000785258, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_Color.b
       value: 0.64705884
@@ -5161,11 +5167,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103034520396907373, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.51
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 8103034520396907373, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.67
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8103034520396907373, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5173,7 +5179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8103034520396907373, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.543
+      value: -0.263
       objectReference: {fileID: 0}
     - target: {fileID: 8103034520396907373, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_LocalPosition.z

@@ -10,10 +10,11 @@ public class InventoryManager : MonoBehaviour
     public List<Item> items = new List<Item>();
 
     [SerializeField] Transform itemContent;
-    [SerializeField] GameObject inventoryItem;
+    [SerializeField] GameObject inventoryItem, inventoryObject;
     [SerializeField] Item healthPot;
     PlayerController pc;
     GameManager gm;
+    bool hasOpened;
 
     private void Awake() {
         Instance = this;
@@ -22,6 +23,12 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(Item item)
     {
+        if(!hasOpened)
+        {
+            inventoryObject.SetActive(true);
+            hasOpened = true;
+        }
+
         foreach(Item prevItem in items)
         {
             if(prevItem.itemName == item.itemName)

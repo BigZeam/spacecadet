@@ -9,6 +9,9 @@ public class Flower : MonoBehaviour
 
     [SerializeField] int growTime;
     [SerializeField] Transform flowerPos; 
+
+    [SerializeField] bool coolFlower;
+    [SerializeField] AudioClip popEffect;
     
     int growTimer;
     bool isGrowing;
@@ -27,7 +30,14 @@ public class Flower : MonoBehaviour
         if(flowerSlot == null && !isGrowing)
         {
             isGrowing = true;
-            Instantiate(flowerResource, flowerPos.position, Quaternion.identity);
+            Instantiate(flowerResource, flowerPos.position, Quaternion.identity); 
+            AudioManager.Instance.Play(popEffect);
+            if(coolFlower)
+            {
+               
+                Instantiate(flowerResource, flowerPos.position + new Vector3(.5f,0,0), Quaternion.identity);
+                Instantiate(flowerResource, flowerPos.position + new Vector3(-.5f,0,0), Quaternion.identity);
+            }
             flowerParticles.SetActive(true);
         }
         if(isGrowing)

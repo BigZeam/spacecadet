@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2113336831052772158}
   - component: {fileID: 1515316930233837936}
   - component: {fileID: 7026393137359840773}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 159709879, guid: d4f80875faf6bea4eb824384a84a4e88, type: 3}
-  m_Color: {r: 0.49056602, g: 0.21494938, b: 0.063249044, a: 1}
+  m_Sprite: {fileID: 618330813, guid: 6b440cd78cd6bd24eb171d22e5e01276, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,7 +147,7 @@ TrailRenderer:
   m_Time: 3
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -174,17 +174,17 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.6320754, g: 0.10255161, b: 0.08745691, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0.08627451}
+      key0: {r: 0.6627451, g: 0.11372549, b: 0.09411765, a: 1}
+      key1: {r: 0.8784314, g: 0.62352943, b: 0.6156863, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0.08627451}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 37972
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -199,7 +199,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
@@ -257,6 +257,10 @@ PrefabInstance:
     - target: {fileID: 2437041382413209923, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_Name
       value: minimap obj
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437041382413209923, guid: 254767a72a396b345845878d713a3fd1, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6917169896000785258, guid: 254767a72a396b345845878d713a3fd1, type: 3}
       propertyPath: m_Sprite

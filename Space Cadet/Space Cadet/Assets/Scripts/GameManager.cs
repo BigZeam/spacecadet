@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,13 +24,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject losePanelObj;
 
     [SerializeField] List<Item> allPossibleItems = new List<Item>();
+    [SerializeField] List<Gun> allPossibleGuns = new List<Gun>();
     [SerializeField] AudioClip song1, song2, song3, bossMusic;
     [SerializeField] bool canPlayNewSong;
+    [SerializeField] GameObject invObject, mapObject, winObj, effectObj;
     float waitTime;
     public bool isGameOver;
+    bool isMapOn, isInvOn, hasFaded;
 
     void Start()
     {
+        
+        isMapOn = true;
         canPlayNewSong = true;
         timerSlider.maxValue = globalTimer;
         startingGun = playerObj.GetComponent<PlayerController>().GetGunSlot1();
@@ -38,7 +44,7 @@ public class GameManager : MonoBehaviour
         ResetItemCounts();
         Invoke(nameof(GameHasStarted), 5f);
         NewSong();
-
+        ResetGunStats();
         //playerObj.transform.position = new Vector3(0, computerTransform.position.y + 10, 0);
         Invoke(nameof(InitializePlayer), .125f);
     }   
@@ -53,6 +59,7 @@ public class GameManager : MonoBehaviour
             LowerRadiationLevels();
         }
         CheckForAnim();
+        CheckForInput();
         timerSlider.value = globalTimer;
         if(playerObj == null)
         {
@@ -60,7 +67,6 @@ public class GameManager : MonoBehaviour
             playerObj = GameObject.FindGameObjectWithTag("Player");
             pc = playerObj.GetComponent<PlayerController>();
         }
-   
     }
     void InitializePlayer()
     {
@@ -146,6 +152,13 @@ public class GameManager : MonoBehaviour
             item.ResetCount();
         }
     }
+    void ResetGunStats()
+    {
+        foreach(Gun gun in allPossibleGuns)
+        {
+            gun.RestoreDefaults();
+        }
+    }
 
     public void SetTimer(bool b)
     {
@@ -188,5 +201,57 @@ public class GameManager : MonoBehaviour
 
         FadeMusic(!fadeIn);
 
+    }
+
+    public void FadeOut()
+    {
+        EndingFade();
+        hasFaded = true;
+        Invoke("IMBAD", .8f);
+        Invoke("newGameEnd", 3f);
+
+        //StartCoroutine(GameEnd());
+    }
+
+    private void EndingFade()
+    {
+        if(hasFaded == false)
+            effectAnim.SetTrigger("FadeOut");
+    }
+    IEnumerator GameEnd()
+    {
+        Debug.Log("Ending Sequence");
+        
+        yield return new WaitForSeconds(1.5f);
+        EndingFade();
+
+        hasFaded = true;
+        yield return new WaitForSeconds(.8f);
+        //SceneManager.LoadScene(0);
+        winObj.SetActive(true);
+
+    }
+    void newGameEnd()
+    {
+        winObj.SetActive(true);
+    }
+    void IMBAD()
+    {
+        //effectObj.SetActive(false);
+        Destroy(effectAnim);
+        pc.moveSpeed = 0;
+    }
+    private void CheckForInput()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            isInvOn = !isInvOn;
+            invObject.SetActive(isInvOn);
+        }
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            isMapOn = !isMapOn;
+            mapObject.SetActive(isMapOn);
+        }
     }
 }

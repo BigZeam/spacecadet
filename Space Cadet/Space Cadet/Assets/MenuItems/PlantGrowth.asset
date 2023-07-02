@@ -15,4 +15,4 @@ MonoBehaviour:
   Itemname: Plant Growth
   splash: {fileID: -1938487055, guid: 00ccd3c6d53d9734dbab5c44cc435e30, type: 3}
   name: 14
-  startingCost: 30
+  startingCost: 5

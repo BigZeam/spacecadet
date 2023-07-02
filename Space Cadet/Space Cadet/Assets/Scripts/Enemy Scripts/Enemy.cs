@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
     public Transform rayStartTransform;
     [SerializeField] AudioClip enemyHitSound;
     [SerializeField] AudioClip enemyAttackSound;
+    [SerializeField] AudioClip enemyDeathSound;
     
     
     //public int damage;
@@ -95,7 +97,7 @@ public class Enemy : MonoBehaviour
                 {
                     rb.AddForce(Vector2.up * jumpForce);
                     transform.Translate(Vector2.up * Time.deltaTime);
-                    Debug.Log("we are hitting");
+                    //Debug.Log("we are hitting");
                 }
             }
 
@@ -131,7 +133,7 @@ public class Enemy : MonoBehaviour
     }
     private void Attack()
     {
-        Debug.Log("Im ATTACKING");
+        //Debug.Log("Im ATTACKING");
         anim.SetTrigger("Attack");
         if(type == 3)
         {
@@ -158,9 +160,10 @@ public class Enemy : MonoBehaviour
     {
         if(health <= 0)
         {
-            Instantiate(coinObj, this.transform.position, Quaternion.identity);
-            Instantiate(deathParticle, this.transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            transform.DOScale(this.transform.localScale * .25f, .75f);
+            speed = 0;
+            AudioManager.Instance.Play(enemyDeathSound);
+            Invoke("KillThis", .75f);
         }
     }
     private void SetChase()
@@ -172,11 +175,18 @@ public class Enemy : MonoBehaviour
         curState = EnemyBehaviour.Chase;
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log(other.gameObject.tag);
 
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerController>().ChangeHealth();
         }
+    }
+    private void KillThis()
+    {
+        Instantiate(coinObj, this.transform.position, Quaternion.identity);
+        Instantiate(deathParticle, this.transform.position, Quaternion.identity);
+        
+        Destroy(this.gameObject);
     }
 }

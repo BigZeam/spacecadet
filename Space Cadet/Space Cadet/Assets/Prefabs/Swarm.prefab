@@ -353,6 +353,7 @@ MonoBehaviour:
   rayStartTransform: {fileID: 8819120502363992518}
   enemyHitSound: {fileID: 8300000, guid: 1737f0d2150e69b46a9398fe240a9639, type: 3}
   enemyAttackSound: {fileID: 8300000, guid: 96ce1bfbfbdb0bb4d92ac561336fdf4f, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 487b42e2b10a52d499ebec7a53f92233, type: 3}
 --- !u!61 &7315926997567222455
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Classic
   m_EditorClassIdentifier: 
   name: Classic
-  gunSprite: {fileID: 517050789, guid: c5f262bdfb21ab5469291c47889e6dc6, type: 3}
+  gunSprite: {fileID: 770894922, guid: ce5eccaf45b0bb8469912e24ab754837, type: 3}
   knockback: 0
   ammoCount: 15
   defaultAmmoCount: 15

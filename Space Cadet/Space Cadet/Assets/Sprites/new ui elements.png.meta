@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 06ada55d291e4104ab06a5dd968ca4c8
+guid: 43b435b23f4d9894398078f5a307651d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,85 +128,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel (2)_0
+      name: playerborder
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
-        width: 192
-        height: 192
+        y: 1800
+        width: 1800
+        height: 900
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c89e67a1a0e13d84598ed9dbf76c7d02
-      internalID: -1235890192
+      spriteID: 2072d8d9acd369a4f8fb2e5c1f1d42a2
+      internalID: 361111522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (2)_1
+      name: openlayout
       rect:
         serializedVersion: 2
-        x: 192
-        y: 384
-        width: 192
-        height: 192
+        x: 1800
+        y: 1800
+        width: 1800
+        height: 900
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2101354181a6c534f8a7b3fc03f18aa8
-      internalID: -60684111
+      spriteID: e9ac43e6666a2024d9fe2ce5981b7ce9
+      internalID: -2009106864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (2)_2
+      name: barmask
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
-        width: 192
-        height: 192
+        y: 900
+        width: 1800
+        height: 900
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f0c0af211b68cb4aa2a97153b9126ba
-      internalID: -1796227097
+      spriteID: a3c8bf42f78f262469e40aca5d03df70
+      internalID: -1736803738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (2)_3
+      name: circlemask
       rect:
         serializedVersion: 2
-        x: 192
-        y: 192
-        width: 192
-        height: 192
+        x: 1800
+        y: 900
+        width: 1800
+        height: 900
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbdab9c47cc74464a86c4916defd8ac8
-      internalID: 498847227
+      spriteID: a1d379d798de487439b73603589e66b7
+      internalID: -691691751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bluebutton
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1800
+        height: 900
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df06586d6b0e6c4fbe424006e181a52
+      internalID: -1161751224
       vertices: []
       indices: 
       edges: []
@@ -222,10 +243,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      New Piskel (2)_3: 498847227
-      New Piskel (2)_2: -1796227097
-      New Piskel (2)_1: -60684111
-      New Piskel (2)_0: -1235890192
+      playerborder: 361111522
+      circlemask: -691691751
+      bluebutton: -1161751224
+      barmask: -1736803738
+      openlayout: -2009106864
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

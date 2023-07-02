@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Stats")]
     public int health;
+    public int maxHealth;
     public int type;
     [SerializeField] Animator anim;
     [SerializeField] GameManager gm;
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         //sr = this.gameObject.GetComponent<SpriteRenderer>();
         DOTween.Init();
+        SetHealthUI();
     }
 
     // Update is called once per frame
@@ -238,8 +240,9 @@ public class PlayerController : MonoBehaviour
     public void SetAmmoUI()
     {
         ammoSlider.value = ammo;
-        string ammoString = ammo.ToString() + " : " + gunSlot1.ammoCount;
-        ammoText.text = ammoString;
+        ammoSlider.maxValue = gunSlot1.ammoCount;
+        //string ammoString = ammo.ToString() + " : " + gunSlot1.ammoCount;
+        //ammoText.text = ammoString;
     }
 
     public void ChangeHealth()
@@ -276,18 +279,28 @@ public class PlayerController : MonoBehaviour
     {
         return gunSlot1;
     }
-    public void IncHealth()
+    public bool IncHealth()
     {
-        if(health < 3 && health > 0)
+        if(health < maxHealth && health > 0)
         {
             health++;
+            SetHealthUI();
+            return true;
         }
-        for(int i = 0; i<UIhearts.Length; i++)
+        return false;
+    }
+    public bool SetMaxHealth()
+    {
+        if(maxHealth < 5)
         {
-            if(health > i)
-            {
-                UIhearts[i].sprite = fullHeart;
-            }
+            maxHealth++;
+            health++;
+            SetHealthUI();
+            return true;
+        }
+        else 
+        {
+            return false;
         }
     }
     public void IncReloadSpeed()
@@ -311,11 +324,18 @@ public class PlayerController : MonoBehaviour
         {
             if(health > i)
             {
+                UIhearts[i].gameObject.SetActive(true);
                 UIhearts[i].sprite = fullHeart;
             }
             else 
             {
-                UIhearts[i].sprite = emptyHeart;
+                if(i<maxHealth)
+                {
+                    UIhearts[i].gameObject.SetActive(true);
+                    UIhearts[i].sprite = emptyHeart;
+                }  
+                else 
+                    UIhearts[i].gameObject.SetActive(false);
             }
         }
     }
@@ -325,5 +345,9 @@ public class PlayerController : MonoBehaviour
     }
     public void SetCanShoot(bool b) {
         canShoot = b;
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }

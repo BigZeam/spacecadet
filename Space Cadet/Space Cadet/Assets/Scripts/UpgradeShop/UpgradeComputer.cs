@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpgradeComputer : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class UpgradeComputer : MonoBehaviour
 
     [Header("UI")]
     //public Text ShopText;
-    public Text[] names, prices;
+    public TMP_Text[] names, prices;
     public Image[] splashes;
     //public GameObject[] itemSlots;
     public List <GameObject> itemSlots = new List<GameObject>();
@@ -29,6 +30,7 @@ public class UpgradeComputer : MonoBehaviour
     int[] itemSlotNum, timesUpgraded, numPrice;
     int x, y, z;
     public GameObject compPanel;
+    [SerializeField] Gun blasterGun;
 
     public float shoptime;
 
@@ -241,8 +243,15 @@ public class UpgradeComputer : MonoBehaviour
             break;
             case UpgradeItem.ItemType.HealthUp:
             //healthUP
-            playerObj.IncHealth();
-            itemList[realChoice].SetCost(-5);
+            if(playerObj.IncHealth())
+            {
+                itemList[realChoice].SetCost(-5);
+            }
+            else 
+            {
+                currency.count = currency.count + itemList[realChoice].GetCost();
+                itemList[realChoice].SetCost(-10);
+            }
             break;
             case UpgradeItem.ItemType.ReloadSpeed:
             //reloadSpeed
@@ -265,14 +274,34 @@ public class UpgradeComputer : MonoBehaviour
             itemList[realChoice].SetCost(100);
             break;
             case UpgradeItem.ItemType.Flower1Growtime:
-            cm.thisFlower.SetGrowTime(1800);
-            itemList[realChoice].SetCost(10);
+            cm.thisFlower.SetGrowTime(3600);
+            itemList[realChoice].SetCost(5);
             break;
             case UpgradeItem.ItemType.RadiationMax:
             gm.timerSlider.maxValue = gm.timerSlider.maxValue + 10000;
             break;
             case UpgradeItem.ItemType.RadiationZone:
-            cm.radiationZone.transform.localScale += new Vector3(5, 0, 0);
+            cm.radiationZone.transform.localScale += new Vector3(40, 0, 0);
+            break;
+            case UpgradeItem.ItemType.BlasterUnlock:
+            itemList[realChoice].SetCost(110);
+            playerObj.gunSlot1 = blasterGun;
+            playerObj.SetNewGunImg();
+            break;
+            case UpgradeItem.ItemType.MaxHP:
+            if(playerObj.SetMaxHealth())
+            {
+                itemList[realChoice].SetCost(5);
+                if(playerObj.GetMaxHealth() >=5)
+                {
+                    itemList[realChoice].SetCost(100);
+                }
+            }
+            else 
+            {
+                currency.count = currency.count + itemList[realChoice].GetCost();
+                itemList[realChoice].SetCost(-10);
+            }
             break;
             default:
             Debug.Log("Broke");

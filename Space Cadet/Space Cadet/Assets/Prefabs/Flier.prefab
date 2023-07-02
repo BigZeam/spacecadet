@@ -554,6 +554,7 @@ MonoBehaviour:
   rayStartTransform: {fileID: 7205612992105933261}
   enemyHitSound: {fileID: 8300000, guid: 1737f0d2150e69b46a9398fe240a9639, type: 3}
   enemyAttackSound: {fileID: 8300000, guid: 78cba9127695c794090121ddc2d164fd, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: 487b42e2b10a52d499ebec7a53f92233, type: 3}
 --- !u!50 &8787322077129214685
 Rigidbody2D:
   serializedVersion: 4

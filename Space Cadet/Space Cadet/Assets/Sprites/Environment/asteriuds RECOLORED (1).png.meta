@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c5f262bdfb21ab5469291c47889e6dc6
+guid: 6b440cd78cd6bd24eb171d22e5e01276
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 1500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -128,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: new guns_0
+      name: asteriuds RECOLORED (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
-        width: 192
-        height: 192
+        y: 1920
+        width: 1920
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31fa4cfe5097b8e4bba929a43ec50ff8
-      internalID: -219975970
+      spriteID: b8491b6483e713f41bfd4ebff8e77a97
+      internalID: 618330813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: new guns_1
+      name: asteriuds RECOLORED (1)_1
       rect:
         serializedVersion: 2
-        x: 192
-        y: 384
-        width: 192
-        height: 192
+        x: 1920
+        y: 1920
+        width: 1920
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,62 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8db041f845ef004e8e124763eb498bb
-      internalID: -1781720159
+      spriteID: 27f75868d969eb541b3ddcb358de6d6d
+      internalID: 545288727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: new guns_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3220f05cbf04bab45bb05332aac7e2cb
-      internalID: -1870295857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: new guns_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 375bcbf2fd9906646b218a73ca645298
-      internalID: -786994838
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: new guns_4
+      name: asteriuds RECOLORED (1)_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 192
-        height: 192
+        width: 1920
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99ecce9e257fa6043a12644c1d4b9675
-      internalID: -1174835527
+      spriteID: 03fca33c43440de40a90cac92991277a
+      internalID: -669046186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: new guns_5
+      name: asteriuds RECOLORED (1)_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 1920
         y: 0
-        width: 192
-        height: 192
+        width: 1920
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77175c588412a3a47a71d64756bd3019
-      internalID: 517050789
+      spriteID: c6997b2325af2044f8a79e6ef452e09b
+      internalID: -1224456502
       vertices: []
       indices: 
       edges: []
@@ -264,12 +222,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      new guns_2: -1870295857
-      new guns_3: -786994838
-      new guns_5: 517050789
-      new guns_4: -1174835527
-      new guns_0: -219975970
-      new guns_1: -1781720159
+      asteriuds RECOLORED (1)_0: 618330813
+      asteriuds RECOLORED (1)_2: -669046186
+      asteriuds RECOLORED (1)_1: 545288727
+      asteriuds RECOLORED (1)_3: -1224456502
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
