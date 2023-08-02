@@ -30,6 +30,7 @@ public class UpgradeComputer : MonoBehaviour
     int[] itemSlotNum, timesUpgraded, numPrice;
     int x, y, z;
     public GameObject compPanel;
+    public Orb orbSlot;
     [SerializeField] Gun blasterGun;
 
     public float shoptime;
@@ -302,6 +303,12 @@ public class UpgradeComputer : MonoBehaviour
                 currency.count = currency.count + itemList[realChoice].GetCost();
                 itemList[realChoice].SetCost(-10);
             }
+            break;
+            case UpgradeItem.ItemType.OrbDamage:
+            orbSlot.SetDamage(25);
+            break;
+            case UpgradeItem.ItemType.OrbProtection:
+            playerObj.orbResetTime += 1f;
             break;
             default:
             Debug.Log("Broke");

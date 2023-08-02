@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: -2094322033, guid: e420be617960c584e99a62436a2a618b, type: 3}
   itemName: Kron
-  count: 50
+  count: 9970
   consumable: 0

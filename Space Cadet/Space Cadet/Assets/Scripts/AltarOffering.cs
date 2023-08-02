@@ -10,13 +10,18 @@ public class AltarOffering : MonoBehaviour
     [SerializeField] Gun opGun;
     public TMP_Text dialogueBox;
     int kronSpent;
+    bool canCheckInput;
     PlayerController pc;
+    [SerializeField] GameObject altarObj;
     void Start()
     {
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
+    private void Update() {
+        CheckInput();
+    }
 
     public void SpendKron()
     {
@@ -45,9 +50,25 @@ public class AltarOffering : MonoBehaviour
             dialogueBox.text = "ok fine here you go";
             pc.gunSlot1 = opGun;
             pc.SetNewGunImg();
-            Destroy(gameObject);
+            if(altarObj)
+                Destroy(altarObj.gameObject);
             break;
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        canCheckInput = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        canCheckInput = false;
+    }
+    void CheckInput()
+    {
+        if(Input.GetKeyDown(KeyCode.F) && canCheckInput)
+        {
+           SpendKron(); 
+        }
+    }
 }

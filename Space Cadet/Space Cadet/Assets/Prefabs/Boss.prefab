@@ -138,7 +138,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 0}
   anim: {fileID: 8407912706870762188}
   bulletPos: {fileID: 0}
-  coinObj: {fileID: 957652453135061455, guid: 28cad503ef289b54aa57dfc91427989f, type: 3}
+  coinObj: {fileID: 3121458086597834953, guid: 9548942c4bfe1b940ad9c6c1fbb40613, type: 3}
   deathParticle: {fileID: 5913244258088972895, guid: 1bde69fa8106c99438641db111b1b9be, type: 3}
   health: 500
   stunTime: 1
@@ -152,6 +152,7 @@ MonoBehaviour:
   rayStartTransform: {fileID: 7731065961474277207}
   enemyHitSound: {fileID: 0}
   enemyAttackSound: {fileID: 0}
+  enemyDeathSound: {fileID: 0}
 --- !u!61 &8407912706319039526
 BoxCollider2D:
   m_ObjectHideFlags: 0

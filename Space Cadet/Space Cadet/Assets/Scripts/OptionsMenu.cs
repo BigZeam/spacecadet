@@ -11,8 +11,11 @@ public class OptionsMenu : MonoBehaviour
     public AudioMixer mixer, effectMixer;
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
+    float startingVolume, startingEffect;
 
     private void Start() {
+        startingVolume = PlayerPrefs.GetFloat("volume");
+        startingEffect = PlayerPrefs.GetFloat("effect");
         resolutions = Screen.resolutions;    
 
         resolutionDropdown.ClearOptions();
@@ -39,16 +42,20 @@ public class OptionsMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = resolutions.Length;
         resolutionDropdown.RefreshShownValue();
+        SetVolume(startingVolume);
+        SetEffectVolume(startingEffect);
     }
 
     public void SetVolume(float volume)
     {
         mixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("volume", volume);
     }
 
     public void SetEffectVolume(float volume)
     {
         effectMixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("effect", volume);
     }
 
     public void SetQuality(int qualityIndex)

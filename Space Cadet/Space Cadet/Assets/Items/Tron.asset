@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 967116863, guid: d91493b6a81bda74cb26611e76b74f0b, type: 3}
   itemName: Tronite
-  count: 1
+  count: 99985
   consumable: 0

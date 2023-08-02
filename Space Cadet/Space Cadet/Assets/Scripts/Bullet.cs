@@ -52,4 +52,8 @@ public class Bullet : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    public int GetDamage()
+    {
+        return owner.damage;
+    }
 }

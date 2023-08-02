@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float invulnerabilityTimer;
     [SerializeField] Color hitColor;
     [SerializeField] SpriteRenderer sr;
+    [SerializeField] GameObject orbObject;
+
+    [SerializeField] public float orbResetTime;
 
     [Header("Sounds")]
     [SerializeField] AudioClip shootEffect;
@@ -271,6 +274,11 @@ public class PlayerController : MonoBehaviour
     {
         canLoseHealth = true;
     }
+    public void MakeInvulnerable()
+    {
+        canLoseHealth = false;
+        Invoke(nameof(Invulnerability), orbResetTime);
+    }
     public int GetHealth()
     {
         return health;
@@ -338,6 +346,10 @@ public class PlayerController : MonoBehaviour
                     UIhearts[i].gameObject.SetActive(false);
             }
         }
+    }
+    public void ActivateOrb()
+    {
+        orbObject.SetActive(true);
     }
     public void SetNewGunImg()
     {

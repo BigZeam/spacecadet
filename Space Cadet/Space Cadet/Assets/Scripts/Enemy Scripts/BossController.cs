@@ -50,7 +50,7 @@ public class BossController : MonoBehaviour
             if(!finaltext)
             {
                 DisplayText("You win this time!", 4f);
-                gm.FadeOut();
+                //gm.FadeOut();
             }
             finaltext = true;
         }

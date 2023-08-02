@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a309fa1ae1db5541a99e675b53aacc4, type: 3}
+  m_Name: OrbProtection
+  m_EditorClassIdentifier: 
+  Itemname: Protection Upgrade
+  splash: {fileID: 859479962, guid: febc22a4b78725043aaa385d1748acda, type: 3}
+  name: 17
+  startingCost: 5

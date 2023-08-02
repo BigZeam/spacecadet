@@ -12,7 +12,9 @@ public class Flower : MonoBehaviour
 
     [SerializeField] bool coolFlower;
     [SerializeField] AudioClip popEffect;
-    
+
+    [SerializeField] GameObject tentMover;
+
     int growTimer;
     bool isGrowing;
     float xval, yval;
@@ -22,6 +24,11 @@ public class Flower : MonoBehaviour
     {
         xval = transform.position.x;
         yval = transform.position.y;
+
+        if(!coolFlower && Random.Range(1, 15) > 6)
+        {
+            tentMover.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -69,5 +76,12 @@ public class Flower : MonoBehaviour
     public void SetGrowTime(int newtime)
     {
         growTime-=newtime;
+    }
+    public void ItsTimeForTent()
+    {
+        if(!coolFlower && Random.Range(1, 15) < 6)
+        {
+            tentMover.SetActive(true);
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip song1, song2, song3, bossMusic;
     [SerializeField] bool canPlayNewSong;
     [SerializeField] GameObject invObject, mapObject, winObj, effectObj;
+    [SerializeField] AudioMixer mixer, effectMixer;
+
+    [SerializeField] GameObject orbShopObj;
+    [SerializeField] GameObject beemoObj;
+    //[SerializeField] GameObject botBossContainerObj;
+    [SerializeField] GameObject shopsContainerObj;
+
     float waitTime;
     public bool isGameOver;
     bool isMapOn, isInvOn, hasFaded;
@@ -44,6 +52,8 @@ public class GameManager : MonoBehaviour
         ResetItemCounts();
         Invoke(nameof(GameHasStarted), 5f);
         NewSong();
+        effectMixer.SetFloat("effect", PlayerPrefs.GetFloat("effect"));
+        mixer.SetFloat("volume", PlayerPrefs.GetFloat("volume"));
         ResetGunStats();
         //playerObj.transform.position = new Vector3(0, computerTransform.position.y + 10, 0);
         Invoke(nameof(InitializePlayer), .125f);
@@ -253,5 +263,15 @@ public class GameManager : MonoBehaviour
             isMapOn = !isMapOn;
             mapObject.SetActive(isMapOn);
         }
+    }
+    public void SetOrbShop()
+    {
+        orbShopObj.SetActive(true);
+        beemoObj.GetComponent<HelperBot>().QuestTime = true;
+        beemoObj.GetComponent<HelperBot>().ResetCount();
+    }
+    public void DisableShop()
+    {
+        shopsContainerObj.SetActive(false);
     }
 }

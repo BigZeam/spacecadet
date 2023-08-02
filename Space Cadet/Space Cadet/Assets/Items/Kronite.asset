@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: -987801523, guid: 07315a7eeacf7534c9bcd1893af305e6, type: 3}
   itemName: Kronite
-  count: 1
+  count: 100
   consumable: 0
